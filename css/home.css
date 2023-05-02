@@ -1,0 +1,36 @@
+body{
+    margin: 10px;
+    background-color: #121212;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav{
+    width: 40em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+.container{
+    width: 95%;
+    display: flex;
+}
+header .container {
+    justify-content: space-between;
+}
+/* Classes */
+.info{
+    color: #FFF;
+    margin-right:5em;
+}
+.logo{
+    width: 18em;
+    margin-left: 3em;
+}
+.imgFundo
+{
+    width: 140em;
+    transform: rotate(65deg);
+    margin-left: -50em;
+    height: 100%;
+}
