@@ -29,8 +29,37 @@ header .container {
 }
 .imgFundo
 {
-    width: 140em;
-    transform: rotate(65deg);
-    margin-left: -50em;
-    height: 100%;
+    width: 160em;
+    transform: rotate(75deg);
+    margin-left: -70em;
+    margin-top: -20em;
+    background-size: 800% 50%;
+}
+.InicioMusic{
+    color: white; 
+    margin-top: -110em;
+    margin-left: 10em;
+}
+.imgBoneco{
+    margin-top: -26em;
+    margin-left: 68em;
+    
+}
+.myFoto{
+    background-color: #181818de;
+    width: 42em;
+    height: 42em;
+    margin-top: 28em;
+    margin-left: 14em;
+    z-index: 1;
+    position: absolute;
+}
+.positionMyfoto{
+    margin-left: 2.5em;
+    margin-top: 2.5em;
+}
+.textSobreMim{
+    margin-top: 37em;
+    margin-left: 70em;
+    color: #FFF;
 }
