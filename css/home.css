@@ -1,65 +1,175 @@
-body{
+body {
     margin: 10px;
     background-color: #121212;
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
-nav{
+nav {
     width: 40em;
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
 }
-.container{
+
+.container {
     width: 95%;
     display: flex;
 }
+
 header .container {
     justify-content: space-between;
 }
-/* Classes */
-.info{
-    color: #FFF;
-    margin-right:5em;
+
+main .logo {
+    margin-left: 70em;
+    margin-top: 40em;
+    right: 100em;
+    z-index: 1;
+
 }
-.logo{
+
+/* Classes */
+.info {
+    color: #FFF;
+    margin-right: 5em;
+}
+
+header .logo {
     width: 18em;
     margin-left: 3em;
 }
-.imgFundo
-{
+
+.imgFundo {
     width: 160em;
     transform: rotate(75deg);
     margin-left: -70em;
     margin-top: -20em;
     background-size: 800% 50%;
 }
-.InicioMusic{
-    color: white; 
+
+.InicioMusic {
+    color: white;
     margin-top: -110em;
     margin-left: 10em;
 }
-.imgBoneco{
+
+.imgBoneco {
     margin-top: -26em;
     margin-left: 68em;
-    
+
 }
-.myFoto{
+ main #sobreMim .BaseGray {
     background-color: #181818de;
-    width: 42em;
-    height: 42em;
-    margin-top: 28em;
-    margin-left: 14em;
+    width: 35em;
+    height: 40em;
+    top: 100em;
+    left: 15em;
     z-index: 1;
     position: absolute;
 }
-.positionMyfoto{
-    margin-left: 2.5em;
-    margin-top: 2.5em;
+main #comoMeAjuda .BaseGray{
+    top: 160em;
+    background-color: #181818de;
+    width: 45em;
+    height: 28em;
+    left: 10em;
+    z-index: 1;
+    position: absolute;
 }
-.textSobreMim{
+main #comoEstaRelacionada .BaseGray{
+    top: 205em;
+    background-color: #181818de;
+    width: 45em;
+    height: 28em;
+    left: 60em;
+    z-index: 1;
+    position: absolute;
+}
+main #conclusao .BaseGrayEsquerda{
+    top: 250em;
+    background-color: #181818de;
+    width: 45em;
+    height: 28em;
+    left: 5em;
+    z-index: 1;
+    position: absolute;
+}
+main #conclusao .BaseGrayDireita{
+    top: 250em;
+    background-color: #181818de;
+    width: 45em;
+    height: 28em;
+    left: 60em;
+    z-index: 1;
+    position: absolute;
+}
+.positionMyfoto {
+    margin-left: 2em;
+    margin-top: 2em;
+}
+
+.textSobreMim {
     margin-top: 37em;
     margin-left: 70em;
     color: #FFF;
+}
+
+.imgAnel1 {
+    position: absolute;
+    width: 80em;
+    top: 100rem;
+    opacity: 1;
+    right: 46em;
+    opacity: 25%;
+    z-index: -1;
+
+}
+.imgAnel2 {
+    position: absolute;
+    width: 80em;
+    top: 125rem;
+    opacity: 1;
+    left: 37em;
+    opacity: 25%;
+    z-index: -1;
+    transform: rotate(179deg);
+
+}
+.imgAnel3 {
+    position: absolute;
+    width: 110em;
+    top: 165rem;
+    opacity: 1;
+    right: 35em;
+    opacity: 25%;
+    z-index: -1;
+
+}
+#comoMeAjuda{
+    display: flex;
+}
+#comoEstaRelacionada{
+    display: flex;
+}
+.headSet{
+    width: 30em;
+    margin-top: 25em;
+    margin-left: 15em;
+}
+.bolha1{
+    width: 55em;
+    transform: rotate(245deg);
+    margin-top: 3em;
+    margin-left: -10.8em;
+    opacity: 16%;
+}
+.las{
+    width: 55em;
+    transform: rotate(120deg);
+    margin-left: -14.8em;
+    opacity: 16%;
+    margin-top:-22em;
+
 }
