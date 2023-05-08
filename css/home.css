@@ -1,10 +1,9 @@
 body {
     margin: 10px;
     background-color: #121212;
-    font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
+    font-family: 'Poppins';
 }
-
 nav {
     width: 40em;
     display: flex;
@@ -24,7 +23,7 @@ header .container {
 
 main .logo {
     margin-left: 70em;
-    margin-top: 40em;
+    margin-top: 32em;
     right: 100em;
     z-index: 1;
 
@@ -60,7 +59,8 @@ header .logo {
     margin-left: 68em;
 
 }
- main #sobreMim .BaseGray {
+
+main #sobreMim .BaseGray {
     background-color: #181818de;
     width: 35em;
     height: 40em;
@@ -69,7 +69,8 @@ header .logo {
     z-index: 1;
     position: absolute;
 }
-main #comoMeAjuda .BaseGray{
+
+main #comoMeAjuda .BaseGray {
     top: 160em;
     background-color: #181818de;
     width: 45em;
@@ -78,7 +79,8 @@ main #comoMeAjuda .BaseGray{
     z-index: 1;
     position: absolute;
 }
-main #comoEstaRelacionada .BaseGray{
+
+main #comoEstaRelacionada .BaseGray {
     top: 205em;
     background-color: #181818de;
     width: 45em;
@@ -87,7 +89,8 @@ main #comoEstaRelacionada .BaseGray{
     z-index: 1;
     position: absolute;
 }
-main #conclusao .BaseGrayEsquerda{
+
+main #conclusao .BaseGrayEsquerda {
     top: 250em;
     background-color: #181818de;
     width: 45em;
@@ -96,7 +99,8 @@ main #conclusao .BaseGrayEsquerda{
     z-index: 1;
     position: absolute;
 }
-main #conclusao .BaseGrayDireita{
+
+main #conclusao .BaseGrayDireita {
     top: 250em;
     background-color: #181818de;
     width: 45em;
@@ -105,14 +109,15 @@ main #conclusao .BaseGrayDireita{
     z-index: 1;
     position: absolute;
 }
+
 .positionMyfoto {
     margin-left: 2em;
     margin-top: 2em;
 }
 
 .textSobreMim {
-    margin-top: 37em;
-    margin-left: 70em;
+    margin-top: 30em;
+    margin-left: 68em;
     color: #FFF;
 }
 
@@ -126,6 +131,7 @@ main #conclusao .BaseGrayDireita{
     z-index: -1;
 
 }
+
 .imgAnel2 {
     position: absolute;
     width: 80em;
@@ -137,6 +143,7 @@ main #conclusao .BaseGrayDireita{
     transform: rotate(179deg);
 
 }
+
 .imgAnel3 {
     position: absolute;
     width: 110em;
@@ -147,29 +154,109 @@ main #conclusao .BaseGrayDireita{
     z-index: -1;
 
 }
-#comoMeAjuda{
+
+#comoMeAjuda {
     display: flex;
 }
-#comoEstaRelacionada{
+
+#comoEstaRelacionada {
     display: flex;
 }
-.headSet{
+
+.headSet {
     width: 30em;
     margin-top: 25em;
     margin-left: 15em;
 }
-.bolha1{
+
+.bolha1 {
     width: 55em;
     transform: rotate(245deg);
     margin-top: 3em;
     margin-left: -10.8em;
     opacity: 16%;
 }
-.las{
+
+.las {
     width: 55em;
     transform: rotate(120deg);
     margin-left: -14.8em;
     opacity: 16%;
-    margin-top:-22em;
+    margin-top: -22em;
 
+}
+#generos .titulo {
+    margin-left: 31.5%;
+}
+.titulo {
+    color: #5D00D0;
+    font-size: 3em;
+    font-weight: 800;
+}
+
+.carrosel {
+    background-color: #181818de;
+    width: 100%;
+    display: flex;
+}
+
+@keyframes go-back {
+    from {
+        transform: translateX(0px);
+    }
+
+    to {
+        transform: translateX(-25px);
+    }
+}
+
+.animate {
+    width: 270px;
+    height: 270px;
+    background: #1f1f1fde;
+    transition: width .5s, height .5s;
+    margin: 4em;
+    animation: go-back 8s infinite alternate;
+
+}
+
+.animate:hover {
+    height: 300px;
+    width: 300px;
+}
+
+#formulario .bolha1 {
+    width: 100em;
+    opacity: 100%;
+    margin-left: -35em;
+    z-index: -1;
+    margin-top: 5em;
+    transform: rotate(127deg);
+    position: relative;
+}
+
+#formulario .bolha {
+    width: 70em;
+    opacity: 100%;
+    margin-left: 35em;
+    margin-top: -35em;
+    position: relative;
+    z-index: -1;
+
+}
+
+#formulario .BaseGray {
+    width: 90%;
+    background-color: #181818;
+    height: 60em;
+    margin-left: 2.5em;
+    margin-top: -70em;
+    z-index: 1;
+    opacity: 100%;
+    padding: 2.5em;
+}
+#formulario .BaseGray2 {
+    background-color: #1b1b1bde;
+    height: 60em;
+    opacity: 100%;
 }
