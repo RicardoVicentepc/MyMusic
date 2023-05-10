@@ -1,3 +1,6 @@
+*{
+    font-family: 'Poppins';
+}
 body {
     margin: 10px;
     background-color: #121212;
@@ -226,29 +229,17 @@ main #conclusao .BaseGrayDireita {
 }
 
 #formulario .bolha1 {
-    width: 100em;
+    width: 65em;
     opacity: 100%;
     margin-left: -35em;
     z-index: -1;
-    margin-top: 5em;
-    transform: rotate(127deg);
+    margin-top: 30em;
     position: relative;
 }
-
-#formulario .bolha {
-    width: 70em;
-    opacity: 100%;
-    margin-left: 35em;
-    margin-top: -35em;
-    position: relative;
-    z-index: -1;
-
-}
-
 #formulario .BaseGray {
     width: 90%;
     background-color: #181818;
-    height: 60em;
+    height: 50em;
     margin-left: 2.5em;
     margin-top: -70em;
     z-index: 1;
@@ -257,6 +248,63 @@ main #conclusao .BaseGrayDireita {
 }
 #formulario .BaseGray2 {
     background-color: #1b1b1bde;
-    height: 60em;
-    opacity: 100%;
+    height: 46em;
+    opacity: 100%;  
+    padding: 2em;
+}
+#sel_Genero, option,input{
+    width: 100%;
+    color: white;
+    padding: 1em;
+    font-family: 'Poppins';
+    font-size: x-large;
+    font-weight: bolder;
+    background-color: #181818de;
+    border: none;
+
+}
+select{
+    border: none;
+    color: white;
+}
+input{
+    width: 96.8%;
+    margin-top: 2%;
+    color: white;
+}
+.New_Genero{
+    width: 96.8%;
+    padding: 1em;
+    font-family: 'Poppins';
+    font-size: x-large;
+    font-weight: bolder;
+    margin-top: 2%;
+    border: none;
+    color: white;
+    background-color: #181818de;
+}
+textarea{
+    width: 99.65%;
+    height: 40%;
+    font-family: 'Poppins';
+    font-size: x-large;
+    font-weight: bolder;
+    margin-top: 2%;
+    background-color: #181818de;
+    border: none;
+    color: white;
+}
+.enviar{
+    width: 8.4em;
+    height: 3em;
+    font-weight: bolder;
+    font-size: x-large;
+    background-color: #5D00D0;
+    color: white;
+    left: 83.5%;
+    position: relative;
+    top: 10%;
+}
+#formulario .titulo{
+   margin-left: 33.5%;
 }
