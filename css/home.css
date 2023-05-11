@@ -16,7 +16,7 @@ nav {
 }
 
 .container {
-    width: 95%;
+    width: 100%;
     display: flex;
 }
 
@@ -45,10 +45,11 @@ header .logo {
 
 .imgFundo {
     width: 160em;
-    transform: rotate(75deg);
+    transform: rotate(89deg);
     margin-left: -70em;
     margin-top: -20em;
     background-size: 800% 50%;
+    z-index: -1;
 }
 
 .InicioMusic {
@@ -69,7 +70,7 @@ main #sobreMim .BaseGray {
     height: 40em;
     top: 100em;
     left: 15em;
-    z-index: 1;
+    z-index: -1;
     position: absolute;
 }
 
@@ -79,7 +80,7 @@ main #comoMeAjuda .BaseGray {
     width: 45em;
     height: 28em;
     left: 10em;
-    z-index: 1;
+    z-index: -1;
     position: absolute;
 }
 
@@ -89,7 +90,7 @@ main #comoEstaRelacionada .BaseGray {
     width: 45em;
     height: 28em;
     left: 60em;
-    z-index: 1;
+    z-index: -1;
     position: absolute;
 }
 
@@ -99,7 +100,7 @@ main #conclusao .BaseGrayEsquerda {
     width: 45em;
     height: 28em;
     left: 5em;
-    z-index: 1;
+    z-index: -1;
     position: absolute;
 }
 
@@ -109,13 +110,14 @@ main #conclusao .BaseGrayDireita {
     width: 45em;
     height: 28em;
     left: 60em;
-    z-index: 1;
+    z-index: -1;
     position: absolute;
 }
 
 .positionMyfoto {
     margin-left: 2em;
-    margin-top: 2em;
+    margin-top: 5em;
+    z-index: -1;
 }
 
 .textSobreMim {
@@ -199,8 +201,10 @@ main #conclusao .BaseGrayDireita {
 
 .carrosel {
     background-color: #181818de;
-    width: 100%;
+    width: 85%;
     display: flex;
+    position: relative;
+    left: 7%;
 }
 
 @keyframes go-back {
@@ -214,8 +218,8 @@ main #conclusao .BaseGrayDireita {
 }
 
 .animate {
-    width: 270px;
-    height: 270px;
+    width: 200px;
+    height: 200px;
     background: #1f1f1fde;
     transition: width .5s, height .5s;
     margin: 4em;
@@ -228,20 +232,23 @@ main #conclusao .BaseGrayDireita {
     width: 300px;
 }
 
-#formulario .bolha1 {
+#formulario {
+    margin-top: 30em;
+}
+/* #formulario .bolha1 {
     width: 65em;
     opacity: 100%;
     margin-left: -35em;
     z-index: -1;
     margin-top: 30em;
-    position: relative;
-}
+    position: relative; */
+/* } */
 #formulario .BaseGray {
     width: 90%;
     background-color: #181818;
     height: 50em;
     margin-left: 2.5em;
-    margin-top: -70em;
+    margin-top: 3em;
     z-index: 1;
     opacity: 100%;
     padding: 2.5em;
@@ -307,4 +314,16 @@ textarea{
 }
 #formulario .titulo{
    margin-left: 33.5%;
+   margin-top: -7em;
+}
+.painelMusic{
+    background-color: #181818de;
+    width: 100%;
+    height: 7em;
+    position: fixed;
+    z-index: 1;
+    bottom: 1px;
+}
+footer{
+    margin-top: 8em;
 }
