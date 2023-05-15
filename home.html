@@ -19,7 +19,7 @@
                 <li class="info">Home</li>
                 <li class="info">Sobre Mim</li>
                 <li class="info">Generos</li>
-                <li class="info">Login</li>
+                <li class="info"><a href="./login.html">Login</a></li>
             </nav>
         </div>
 
@@ -60,7 +60,12 @@
                 <img class="logo" src="./img/logo.png" alt="MyMusic">
             </div>
             <div class="BaseGray">
-                a
+               <p class="TextosExplicativos">
+                 Por eu ser uma pessoa que gosta de diversos gêneros de música. Eu
+                 acabo optando pelo o que eu estou sentindo no dia a dia.
+                 Seja um lofi para estudar, ou até uma música animada para me ajudar a ficar 
+                 feliz. Afinal, ninguém gosta de ficar triste.
+                </p>
             </div>
 
         </section>
@@ -69,7 +74,12 @@
                 <img class="headSet" src="./img/headSet.png" alt="MyMusic">
             </div>
             <div class="BaseGray">
-                asdlk
+                <p class="TextosExplicativos">
+                    No meu ver a música está ligada no nosso dia e 
+                    durante toda nossa vida. Tem momentos que certas 
+                    música chamam sua atenção porque você se reconhece 
+                    com aquilo. Ou até porque acabou gostando dela.
+                   </p>
             </div>
         </section>
 
@@ -99,7 +109,7 @@
         </section>
 
         <section id="formulario">
-            <h1 class="titulo" >Agora é com você</h1>
+            <h1 class="titulo">Agora é com você</h1>
             <div class="BaseGray" id="BaseGray">
                 <div class="BaseGray2" id="BaseGray2">
                     <select id="sel_Genero" onchange="OutroGenero()">
@@ -111,32 +121,52 @@
                         <option value="Forró">Forró</option>
                         <option value="Sertanejo">Sertanejo</option>
                         <option value="Pagode">Pagode</option>
-                        <option value="outro" >Outro</option>
+                        <option value="outro">Outro</option>
                     </select>
                     <div id="ExibirGeneroNovo"></div>
                     <input type="text" placeholder="Me Diga Sua Música Favorita">
-                    <textarea ></textarea>
+                    <textarea style="resize: none;" maxlength="800"></textarea>
                     <button class="enviar">Enviar</button>
                 </div>
             </div>
         </section>
     </main>
     <footer>
-        <div class="painelMusic"></div>
+        <div class="painelMusic">
+            <div class="sessaoArtista">
+                <div class="fotoArtista"><img src="./img/Eu.jpg" width="97" alt=""></div>
+                <div class="nomeMusica">Meu Mundo Louco</div>
+                <div class="nomeArtista">Ricardo Vicente</div>
+                <div class="life"></div>
+            </div>
+            <div class="playerMusica">
+                <button class="botaoPlayer" onclick="OutroGenero()"><img class="imgPlay" src="./img/iconPlay.png" alt=""></button>
+                <img class="imgskipRight" src="./img/SkipIcon.png" alt="">
+                <img class="imgskipLeft" src="./img/SkipIcon.png" alt="">
+                <div class="barraMusica"></div>
+            </div>
+            <div class="snippets">
+                <img src="./img/AumentarIcon.png" class="AumentarVolume" alt="">
+                <div class="aumentarVolume"></div>
+                <img class="aumentarImg" src="./img/AumentarTela.png" alt="">
+            </div>
+
+        </div>
+        </div>
 
     </footer>
 </body>
 
 </html>
 <script>
-    function OutroGenero(){
-    var genero = sel_Genero.value
-    if(genero == 'outro'){
-        BaseGray2.style.height = `55em`
-        BaseGray.style.height = `59em`
-        ExibirGeneroNovo.innerHTML = `<input class="New_Genero" type="text" placeholder="Insira o gênero desejado">`
-    }else
-    ExibirGeneroNovo.innerHTML = null
+    function OutroGenero() {
+        var genero = sel_Genero.value
+        if (genero == 'outro') {
+            BaseGray2.style.height = `55em`
+            BaseGray.style.height = `59em`
+            ExibirGeneroNovo.innerHTML = `<input class="New_Genero" type="text" placeholder="Insira o gênero desejado">`
+        } else
+            ExibirGeneroNovo.innerHTML = null
 
-}
+    }
 </script>

@@ -1,5 +1,9 @@
-*{
+* {
     font-family: 'Poppins';
+}
+a{
+    text-decoration: none;
+    color: white;
 }
 body {
     margin: 10px;
@@ -7,6 +11,7 @@ body {
     box-sizing: border-box;
     font-family: 'Poppins';
 }
+
 nav {
     width: 40em;
     display: flex;
@@ -133,7 +138,7 @@ main #conclusao .BaseGrayDireita {
     opacity: 1;
     right: 46em;
     opacity: 25%;
-    z-index: -1;
+    z-index: -2;
 
 }
 
@@ -190,9 +195,11 @@ main #conclusao .BaseGrayDireita {
     margin-top: -22em;
 
 }
+
 #generos .titulo {
     margin-left: 31.5%;
 }
+
 .titulo {
     color: #5D00D0;
     font-size: 3em;
@@ -235,6 +242,7 @@ main #conclusao .BaseGrayDireita {
 #formulario {
     margin-top: 30em;
 }
+
 /* #formulario .bolha1 {
     width: 65em;
     opacity: 100%;
@@ -253,13 +261,17 @@ main #conclusao .BaseGrayDireita {
     opacity: 100%;
     padding: 2.5em;
 }
+
 #formulario .BaseGray2 {
     background-color: #1b1b1bde;
     height: 46em;
-    opacity: 100%;  
+    opacity: 100%;
     padding: 2em;
 }
-#sel_Genero, option,input{
+
+#sel_Genero,
+option,
+input {
     width: 100%;
     color: white;
     padding: 1em;
@@ -270,16 +282,19 @@ main #conclusao .BaseGrayDireita {
     border: none;
 
 }
-select{
+
+select {
     border: none;
     color: white;
 }
-input{
+
+input {
     width: 96.8%;
     margin-top: 2%;
     color: white;
 }
-.New_Genero{
+
+.New_Genero {
     width: 96.8%;
     padding: 1em;
     font-family: 'Poppins';
@@ -290,7 +305,8 @@ input{
     color: white;
     background-color: #181818de;
 }
-textarea{
+
+textarea {
     width: 99.65%;
     height: 40%;
     font-family: 'Poppins';
@@ -301,7 +317,8 @@ textarea{
     border: none;
     color: white;
 }
-.enviar{
+
+.enviar {
     width: 8.4em;
     height: 3em;
     font-weight: bolder;
@@ -312,18 +329,158 @@ textarea{
     position: relative;
     top: 10%;
 }
-#formulario .titulo{
-   margin-left: 33.5%;
-   margin-top: -7em;
+
+#formulario .titulo {
+    margin-left: 33.5%;
+    margin-top: -7em;
 }
-.painelMusic{
+
+.painelMusic {
     background-color: #181818de;
     width: 100%;
     height: 7em;
     position: fixed;
     z-index: 1;
-    bottom: 1px;
+    bottom: 0;
+    margin-left: -9px;
+    display: flex;
 }
-footer{
+
+footer {
     margin-top: 8em;
+}
+
+.sessaoArtista {
+    width: 30%;
+    height: 100vh;
+    display: flex;
+}
+
+.fotoArtista {
+    position: relative;
+    left: 5%;
+    top: .7%;
+    width: 30%;
+    height: 10vh;
+}
+
+.nomeMusica {
+    position: relative;
+    top: 3%;
+    width: 60%;
+    height: 5%;
+    left: 10.5%;
+    overflow: auto;
+    color: #FFF;
+    font-weight: bolder;
+    font-size: 1.1em;
+
+}
+
+.nomeArtista {
+    width: 50%;
+    height: 4.2%;
+    position: relative;
+    top: 6.5%;
+    right: 28%;
+    color: #FFF;
+    font-weight: 500;
+    font-size: .9em;
+
+}
+
+.life {
+    width: 50px;
+    height: 50px;
+    right: 10%;
+    top: 3%;
+    position: relative;
+    background-color: #5D00D0;
+}
+
+.playerMusica {
+    width: 50%;
+    height: 100vh;
+}
+
+.botaoPlayer {
+    position: relative;
+    left: 67.5%;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 100%;
+    top: 1%;
+    border: 2px solid #FFF;
+}
+
+.imgPlay {
+    width: 25px;
+    position: relative;
+    top: 5%;
+    left: 10%;
+}
+
+.imgskipRight {
+    width: 35px;
+    position: relative;
+    left: 80.2%;
+    top: 1.38%;
+    height: 35px;
+}
+
+.imgskipLeft {
+    width: 35px;
+    position: relative;
+    left: 36%;
+    top: 1.4%;
+    height: 35px;
+    transform: rotate(180deg);
+}
+
+.barraMusica {
+    background-color: #FFF;
+    width: 55%;
+    height: 6px;
+    position: relative;
+    left: 42%;
+    top: 2.8%;
+    border-radius: 5em;
+}
+
+.snippets {
+    width: 50%;
+    height: 100vh;
+}
+
+.AumentarVolume {
+    width: 5%;
+    position: relative;
+    left: 51%;
+    top: 3.2%;
+}
+
+.aumentarVolume {
+    background-color: #FFF;
+    width: 16%;
+    height: 6px;
+    border-radius: 5em;
+    position: relative;
+    left: 60%;
+    top: 0.45%;
+}
+.aumentarImg{
+    width: 3.4%;
+    position: relative;
+    left: 80%;
+    top: -.6em;
+}
+.TextosExplicativos{
+    color: #ffffffb7;
+    font-size: 27px;
+    font-style: medium;
+    line-height: 45px;
+    align-items: left;
+    vertical-align: top;
+    margin: 2em;
 }
