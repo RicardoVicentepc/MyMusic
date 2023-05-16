@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,31 +9,50 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <title>Login</title>
 </head>
+
 <body>
     <div class="container">
         <div class="baseGray">
             <div class="infos" id="infos">
-                <img class="logo" src="./img/logo.png" alt="">
-                    <p class="pergunta" id="pergunta">Novo Em Nosso Sistema?</p>
-                    <p class="Direcao">Realize Seu <p class="cadastro"><button class="buttonCadastrar" onclick="MudarPosicao()" id="Cadastro">Cadastro</button></p></p>
+               <a href="./home.html"> <img class="logo" src="./img/logo.png" alt=""></a>
+                <p class="pergunta" id="pergunta">Novo Em Nosso Sistema?</p>
+                <p class="Direcao" id="Direcao">Realize Seu <button class="buttonCadastrar" onclick="MudarPosicao()"
+                        id="textRoxo">Cadastro</button></p>
             </div>
-            <div class="Credencial">
-                <h1 class="login">Login</h1>
-                <input class="inputEmail" type="text" placeholder="Email">
-                <input class="inputSenha" type="password" placeholder="Senha">
-                <p class="EsqueceuSenha">Esqueceu Sua Senha?</p>
-                <button class="button"><a href="">Login</a></button>
+            <div class="Cadastro" id="Cadastro">
+                <h1 class="h1Cadastro">Cadastro</h1>
+                <input class="inputNomeCadastro" type="text" placeholder="Nome">
+                <input class="inputSobreNomeCadastro" type="text" placeholder="SobreNome">
+                <input class="inputEmailCadastro" type="text" placeholder="Email">
+                <input class="inputSenhaCadastro" type="password" placeholder="Senha">
+                <button class="buttonCadastro"><a href="">Registrar</a></button>
             </div>
+                <div class="Credencial" id="Login">
+                    <h1 class="login">Login</h1>
+                    <input class="inputEmail" type="text" placeholder="Email">
+                    <input class="inputSenha" type="password" placeholder="Senha">
+                    <p class="EsqueceuSenha">Esqueceu Sua Senha?</p>
+                    <button class="button"><a href="./dashboard.html">Login</a></button>
+                </div>
 
         </div>
     </div>
 </body>
+
 </html>
 <script>
-    function MudarPosicao(){
+    function MudarPosicao() {
         pergunta.innerHTML = null
         pergunta.innerHTML = "Já conhece nosso Sistema?"
-        Cadastro.innerHTML = null
-        Cadastro.innerHTML = "Login"
+        textRoxo.innerHTML = null
+        textRoxo.innerHTML = `<a href="./login.html"><button class="buttonCadastrar"
+                        id="textRoxo" style="left:-20.4%; top:-2px;">Login</button></a>`
+        Cadastro.style.display = "block"
+        Cadastro.style.left = "-30%"
+        Login.style.display = "none"
+        infos.style.right = '-55%'
+        infos.style.width = '66em'
+        Direcao.style.left = "33%"
+
     }
 </script>
