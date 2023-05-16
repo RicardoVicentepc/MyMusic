@@ -5,9 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/login.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <title>Login</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="baseGray">
+            <div class="infos" id="infos">
+                <img class="logo" src="./img/logo.png" alt="">
+                    <p class="pergunta" id="pergunta">Novo Em Nosso Sistema?</p>
+                    <p class="Direcao">Realize Seu <p class="cadastro"><button class="buttonCadastrar" onclick="MudarPosicao()" id="Cadastro">Cadastro</button></p></p>
+            </div>
+            <div class="Credencial">
+                <h1 class="login">Login</h1>
+                <input class="inputEmail" type="text" placeholder="Email">
+                <input class="inputSenha" type="password" placeholder="Senha">
+                <p class="EsqueceuSenha">Esqueceu Sua Senha?</p>
+                <button class="button"><a href="">Login</a></button>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
+<script>
+    function MudarPosicao(){
+        pergunta.innerHTML = null
+        pergunta.innerHTML = "Já conhece nosso Sistema?"
+        Cadastro.innerHTML = null
+        Cadastro.innerHTML = "Login"
+    }
+</script>
