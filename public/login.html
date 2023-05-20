@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="baseGray">
+            <div class="infos" id="infos">
+               <a href="./home.html"> <img class="logo" src="./img/logo.png" alt=""></a>
+                <p class="pergunta" id="pergunta">Novo Em Nosso Sistema?</p>
+                <p class="Direcao" id="Direcao">Realize Seu <button class="buttonCadastrar" onclick="MudarPosicao()"
+                        id="textRoxo">Cadastro</button></p>
+            </div>
+            <div class="Cadastro" id="Cadastro">
+                <h1 class="h1Cadastro">Cadastro</h1>
+                <input class="inputNomeCadastro" id="ipt_nome" type="text" placeholder="Nome">
+                <input class="inputSobreNomeCadastro" id="ipt_sobreNome" type="text" placeholder="SobreNome">
+                <input class="inputEmailCadastro" type="text" id="ipt_email" placeholder="Email">
+                <input class="inputSenhaCadastro" type="password" id="ipt_senha" placeholder="Senha">
+                <input class="inputSenhaCadastro" type="password" id="ipt_senhaConfirmacao" placeholder="Confirmar Senha">
+                <button class="buttonCadastro" onclick="cadastrar()">Registrar</button>
+            </div>
+                <div class="Credencial" id="Login">
+                    <h1 class="login">Login</h1>
+                    <input class="inputEmail" type="text" placeholder="Email">
+                    <input class="inputSenha" type="password" placeholder="Senha">
+                    <p class="EsqueceuSenha">Esqueceu Sua Senha?</p>
+                    <button class="button"><a href="./dashboard.html">Login</a></button>
+                </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function MudarPosicao() {
+        pergunta.innerHTML = null
+        pergunta.innerHTML = "Já conhece nosso Sistema?"
+        textRoxo.innerHTML = null
+        textRoxo.innerHTML = `<a href="./login.html"><button class="buttonCadastrar"
+                        id="textRoxo" style="left:-20.4%; top:-2px;">Login</button></a>`
+        Cadastro.style.display = "block"
+        Cadastro.style.left = "-30%"
+        Cadastro.style.top = "-9%"
+        Login.style.display = "none"
+        infos.style.right = '-55%'
+        infos.style.width = '79em'
+        Direcao.style.left = "33%"
+
+    }
+
+    function cadastrar(){
+        var nomeVar = ipt_nome.value
+        var sobreNomeVar = ipt_sobreNome.value
+        var emailVar = ipt_email.value
+        var senhaVar = ipt_senha.value
+        var confirmaSenhaVar = ipt_senha.value
+        
+        if( nomeVar == "" || sobreNomeVar == "" ||emailVar == "" ||senhaVar == "" || confirmaSenhaVar == "" ){
+            alert("Preencha o dados corretos")
+            return false
+        }else{
+
+        }
+        fetch("pessoa/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                sobreNomeServer: sobreNomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta){
+            console.log("resposta : ", resposta);
+
+            if(resposta.ok){
+                alert("Cadastro Feito com sucesso❤️")
+                
+                setTimeout(()=> {
+                    window.location + "login.html"
+                }, 2000)
+            }else{
+                throw ("Erro ao realizar cadastro!")
+            }
+        }).catch(function (resposta){
+            console.log(`#ERRO: ${resposta}`);
+        });
+        return false;
+    }
+
+
+</script>
