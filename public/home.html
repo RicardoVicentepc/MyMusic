@@ -140,17 +140,20 @@
                 <div class="life"></div>
             </div>
             <div class="playerMusica">
-                <button class="botaoPlayer" onclick="OutroGenero()"><img class="imgPlay" src="./img/iconPlay.png" alt=""></button>
+                <button class="botaoPlayer" onclick="player()"><img class="imgPlay" src="./img/iconPlay.png"></button>
                 <img class="imgskipRight" src="./img/SkipIcon.png" alt="">
                 <img class="imgskipLeft" src="./img/SkipIcon.png" alt="">
                 <div class="barraMusica"></div>
             </div>
             <div class="snippets">
-                <img src="./img/AumentarIcon.png" class="AumentarVolume" alt="">
+               <img src="./img/AumentarIcon.png" onclick="document.getElementById('player').volume-=1" class="AumentarVolume" alt="">
                 <div class="aumentarVolume"></div>
                 <img class="aumentarImg" src="./img/AumentarTela.png" alt="">
             </div>
-
+            <div style="display: none;">
+                <audio id="player" src="./music/mchollywood-baile-ta-pocando-feat-ngks-miticodj-b6f7cdd5.mp3" controls  loop>
+                </audio>
+            </div>
         </div>
         </div>
 
@@ -159,6 +162,33 @@
 
 </html>
 <script>
+    var i = 0
+    var j = 0
+    function player(){
+        if(i == 0){
+            document.getElementById('player').play()
+            i=1
+            return true
+        }else{
+            document.getElementById('player').pause()
+            i=0
+            return false
+
+        }
+
+    }
+    function mutarDesmutar(){
+        if(j == 0){
+            document.getElementById('player').volume+=1
+            j=1
+            return true
+        }else{
+            document.getElementById('player').volume-=1
+            j=0
+            return false
+
+        }
+    }
     function OutroGenero() {
         var genero = sel_Genero.value
         if (genero == 'outro') {

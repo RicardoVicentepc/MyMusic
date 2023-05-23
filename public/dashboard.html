@@ -6,7 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    
+<body onload="obterDados()">
+    Meu pau   
+    <div id="ExibirQtdUserSystems" ></div>
+    <div>
+        <audio id="player" src="./music/mchollywood-baile-ta-pocando-feat-ngks-miticodj-b6f7cdd5.mp3" controls autoplay loop>
+            </audio>
+        <button onclick="document.getElementById('player').play()">Play</button>
+        <button onclick="document.getElementById('player').pause()">Pause</button>
+        <button onclick="document.getElementById('player').volume+=1">Aumentar volume</button>
+        <button onclick="document.getElementById('player').volume-=1">Diminuir volume</button>
+      </div>
 </body>
 </html>
+<script>
+
+    function obterDados(){
+        fetch('/pessoa/listar', {cache: 'no-store'}).then(function (response){
+            if(response.ok){
+                response.json().then(function(resposta){
+                    var converterParaJSON = JSON.stringify(resposta)
+                    var transformarParaVetor = JSON.parse(converterParaJSON)
+                    ExibirQtdUserSystems.innerHTML = transformarParaVetor[0].PessoasCadastradas
+                })
+            } else {
+                console.log('Nenhum dado encontrados')
+            }
+        }).catch(function (error){
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+        });
+    }
+</script>
