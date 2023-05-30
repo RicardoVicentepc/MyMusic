@@ -105,7 +105,6 @@ main #conclusao .BaseGrayEsquerda {
     width: 45em;
     height: 28em;
     left: 5em;
-    z-index: -1;
     position: absolute;
 }
 
@@ -115,7 +114,6 @@ main #conclusao .BaseGrayDireita {
     width: 45em;
     height: 28em;
     left: 60em;
-    z-index: -1;
     position: absolute;
 }
 
@@ -183,20 +181,29 @@ main #conclusao .BaseGrayDireita {
     transform: rotate(245deg);
     margin-top: 3em;
     margin-left: -10.8em;
-    opacity: 16%;
+    opacity: 50%;
 }
 
 .las {
     width: 55em;
     transform: rotate(120deg);
-    margin-left: -14.8em;
-    opacity: 16%;
-    margin-top: -22em;
-
+    opacity: 50%;
 }
 
 #generos .titulo {
     margin-left: 31.5%;
+}
+#conclusao .titulo{
+    position: relative;
+    left: 5%;
+}
+#conclusao p{
+    font-size: 1.5em;
+    color: #ffffffb7;
+    padding: 2em;
+    position: relative;
+    top: -10%;
+    line-height: 45px;
 }
 
 .titulo {
@@ -207,10 +214,10 @@ main #conclusao .BaseGrayDireita {
 
 .carrosel {
     background-color: #181818de;
-    width: 85%;
+    width: 90%;
     display: flex;
     position: relative;
-    left: 7%;
+    left: 3%;
 }
 
 @keyframes go-back {
@@ -227,9 +234,9 @@ main #conclusao .BaseGrayDireita {
     width: 200px;
     height: 200px;
     background: #1f1f1fde;
-    transition: width .5s, height .5s;
+    transition: width .2s, height .2s;
     margin: 4em;
-    animation: go-back 8s infinite alternate;
+    animation: go-back 2s infinite alternate;
 
 }
 
@@ -242,14 +249,6 @@ main #conclusao .BaseGrayDireita {
     margin-top: 30em;
 }
 
-/* #formulario .bolha1 {
-    width: 65em;
-    opacity: 100%;
-    margin-left: -35em;
-    z-index: -1;
-    margin-top: 30em;
-    position: relative; */
-/* } */
 #formulario .BaseGray {
     width: 90%;
     background-color: #181818;
@@ -326,7 +325,7 @@ textarea {
     color: white;
     left: 83.5%;
     position: relative;
-    top: 10%;
+    top: 3%;
 }
 
 #formulario .titulo {
@@ -446,6 +445,13 @@ footer {
     top: 2.8%;
     border-radius: 5em;
 }
+#mutar{
+    height: 40px;
+    width: 40px;
+    position: relative;
+    left: 51%;
+    top: 2.3%;
+}
 
 .snippets {
     width: 50%;
@@ -453,10 +459,7 @@ footer {
 }
 
 .AumentarVolume {
-    width: 5%;
-    position: relative;
-    left: 51%;
-    top: 3.2%;
+    width: 100%;
 }
 
 .aumentarVolume {

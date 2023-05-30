@@ -14,7 +14,7 @@
 
     <header>
         <div class="container">
-            <img class="logo" src="./img/logo.png" alt="MyMusic">
+            <img class="logo" src="./img/logo.png" id="logo" alt="MyMusic">
             <nav>
                 <li class="info">Home</li>
                 <li class="info">Sobre Mim</li>
@@ -35,9 +35,7 @@
             </div>
             </img>
             <div class="imgBoneco">
-                <img width="700"
-                    src="./img/imgBoneco.png"
-                    alt="">
+                <img width="700" src="./img/imgBoneco.png" alt="">
             </div>
         </section>
         <section id="sobreMim" style="display: flex;">
@@ -60,11 +58,11 @@
                 <img class="logo" src="./img/logo.png" alt="MyMusic">
             </div>
             <div class="BaseGray">
-               <p class="TextosExplicativos">
-                 Por eu ser uma pessoa que gosta de diversos gêneros de música. Eu
-                 acabo optando pelo o que eu estou sentindo no dia a dia.
-                 Seja um lofi para estudar, ou até uma música animada para me ajudar a ficar 
-                 feliz. Afinal, ninguém gosta de ficar triste.
+                <p class="TextosExplicativos">
+                    Por eu ser uma pessoa que gosta de diversos gêneros de música. Eu
+                    acabo optando pelo o que eu estou sentindo no dia a dia.
+                    Seja um lofi para estudar, ou até uma música animada para me ajudar a ficar
+                    feliz. Afinal, ninguém gosta de ficar triste.
                 </p>
             </div>
 
@@ -75,36 +73,40 @@
             </div>
             <div class="BaseGray">
                 <p class="TextosExplicativos">
-                    No meu ver a música está ligada no nosso dia e 
-                    durante toda nossa vida. Tem momentos que certas 
-                    música chamam sua atenção porque você se reconhece 
+                    No meu ver a música está ligada no nosso dia e
+                    durante toda nossa vida. Tem momentos que certas
+                    música chamam sua atenção porque você se reconhece
                     com aquilo. Ou até porque acabou gostando dela.
-                   </p>
+                </p>
             </div>
         </section>
 
         <section id="conclusao">
             <img class="bolha1" src="./img/bolha.png" alt="">
-            <div class="BaseGrayEsquerda">esquerda</div>
-            <div class="BaseGrayDireita">
-                <img class="las" src="./img/bolha.png" alt="">
+            <div class="BaseGrayEsquerda">
 
+                <h1 class="titulo">Como isso me ajuda?</h1>
+                <p> Geralmente, eu uso este artificio para
+                fugir da minha realidade, para me ajudar
+                a pensar no que eu devo fazer ou tomar uma decisão.
+                Se o espinafre é algo que da força ao popeye, a música seria o meu especial contra o mundo.</p>
+            </div>
+            <img class="las" src="./img/bolha.png" alt="">
+            <div class="BaseGrayDireita">
+                <h1 class="titulo">Como eu a conheci?</h1>
+                <p> Quando eu era criança, eu gostava de ouvir barulho, minha mãe sempre dizia que eu me acalmava caso eu estivesse aguniado. Creio que isso se justifica perfeitamente para saber como eu passei a amar isso.</p>
+            </div>
             </div>
         </section>
 
         <section id="generos">
-            <h1 class="titulo">Meus Gêneros favoritos</h1>
+            <h1 class="titulo">Meus gêneros favoritos</h1>
             <div class="carrosel">
-                <div class="animate">
-                </div>
-                <div class="animate">
-                </div>
-                <div class="animate">
-                </div>
-                <div class="animate">
-                </div>
-                <div class="animate">
-                </div>
+                <img class="animate" src="./img/mpb.jpg" width="10">
+                <img class="animate" src="./img/rap.jpg" width="10">
+                <img class="animate" src="./img/samba.jpg" width="10">
+                <img class="animate" src="./img/rock-removebg-preview.png" width="10">
+                <img class="animate" src="./img/funk.png" width="10">
             </div>
         </section>
 
@@ -123,10 +125,11 @@
                         <option value="Pagode">Pagode</option>
                         <option value="outro">Outro</option>
                     </select>
+                    <input type="text" id="ipt_email" placeholder="Me Diga Seu Email">
                     <div id="ExibirGeneroNovo"></div>
-                    <input type="text" placeholder="Me Diga Sua Música Favorita">
-                    <textarea style="resize: none;" maxlength="800"></textarea>
-                    <button class="enviar">Enviar</button>
+                    <input type="text" id="ipt_nomeMusica" placeholder="Me Diga Sua Música Favorita">
+                    <textarea id="ipt_desc" style="resize: none;" maxlength="800" ></textarea>
+                    <button class="enviar" onclick="enviarForms()">Enviar</button>
                 </div>
             </div>
         </section>
@@ -140,18 +143,22 @@
                 <div class="life"></div>
             </div>
             <div class="playerMusica">
-                <button class="botaoPlayer" onclick="player()"><img class="imgPlay" src="./img/iconPlay.png"></button>
+                <button class="botaoPlayer" onclick="player()" id="btn"><img class="imgPlay" id="imgPlay"
+                        src="./img/iconPlay.png"></button>
                 <img class="imgskipRight" src="./img/SkipIcon.png" alt="">
                 <img class="imgskipLeft" src="./img/SkipIcon.png" alt="">
                 <div class="barraMusica"></div>
             </div>
             <div class="snippets">
-               <img src="./img/AumentarIcon.png" onclick="document.getElementById('player').volume-=1" class="AumentarVolume" alt="">
+                <div id="mutar">
+                    <img src="./img/AumentarIcon.png" onclick="mutarDesmutar()" class="AumentarVolume" alt="">
+                </div>
                 <div class="aumentarVolume"></div>
                 <img class="aumentarImg" src="./img/AumentarTela.png" alt="">
             </div>
             <div style="display: none;">
-                <audio id="player" src="./music/mchollywood-baile-ta-pocando-feat-ngks-miticodj-b6f7cdd5.mp3" controls  loop>
+                <audio id="player" src="./music/mchollywood-baile-ta-pocando-feat-ngks-miticodj-b6f7cdd5.mp3" controls
+                    loop>
                 </audio>
             </div>
         </div>
@@ -163,40 +170,98 @@
 </html>
 <script>
     var i = 0
-    var j = 0
-    function player(){
-        if(i == 0){
+    function player() {
+        if (i == 1) {
             document.getElementById('player').play()
-            i=1
+            i = 0
+            btn.innerHTML = `
+            <style>
+                .imgskipLeft{
+                    top: 1.8%;
+                }
+                 .imgskipRight {
+                    top: 1.9%;
+                }
+                .barraMusica{
+                    top: 2.7%
+                }
+            #imgPlay{
+                left:0;
+            </style>
+            <img class="imgPlay" id="imgPlay" src="./img/botao-de-pausa.png">
+            `
             return true
-        }else{
+        } else {
             document.getElementById('player').pause()
-            i=0
+            i = 1
+            btn.innerHTML = `<img class="imgPlay" id="imgPlay"  src="./img/iconPlay.png">`
             return false
 
         }
 
     }
-    function mutarDesmutar(){
-        if(j == 0){
-            document.getElementById('player').volume+=1
-            j=1
-            return true
-        }else{
-            document.getElementById('player').volume-=1
-            j=0
-            return false
-
+    function mutarDesmutar() {
+        if (i == 1) {
+            document.getElementById('player').volume += 1
+            i--
+            mutar.innerHTML = `
+            <img width="20" src="./img/AumentarIcon.png" onclick="mutarDesmutar()" class="AumentarVolume">`
+        } else {
+            document.getElementById('player').volume -= 1
+            i++
+            mutar.innerHTML = `
+            <img width="20" src="./img/opcao-mute.png" onclick="mutarDesmutar()" class="AumentarVolume">`
+            
         }
     }
     function OutroGenero() {
         var genero = sel_Genero.value
         if (genero == 'outro') {
-            BaseGray2.style.height = `55em`
-            BaseGray.style.height = `59em`
-            ExibirGeneroNovo.innerHTML = `<input class="New_Genero" type="text" placeholder="Insira o gênero desejado">`
+            BaseGray2.style.height = `58em`
+            BaseGray.style.height = `62em`
+            ExibirGeneroNovo.innerHTML = `<input class="New_Genero" type="text" id="sel_Genero" placeholder="Insira o gênero desejado">`
         } else
             ExibirGeneroNovo.innerHTML = null
-
     }
+    function enviarForms() {
+        var emailVar = ipt_email.value
+        var nomeMusicaVar = ipt_nomeMusica.value
+        var descVar = ipt_desc.value
+        var generoVar = sel_Genero.value
+        //  ipt_nomeMusica ipt_nomeMusica ipt_desc
+        if (generoVar == "" || descVar  == "" || nomeMusicaVar == "" || emailVar == "") {
+            alert("Preencha o dados corretos")
+            return false
+        } else {
+
+        }
+        fetch("pessoa/Recomendar", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+               emailServer : emailVar,
+               generoServer: generoVar,
+               musicaServer: nomeMusicaVar,
+               descServer: descVar
+            })
+        }).then(function (resposta) {
+            console.log("resposta : ", resposta);
+
+            if (resposta.ok) {
+                alert("Cadastro Feito com sucesso❤️")
+
+                setTimeout(() => {
+                    window.location + "login.html"
+                }, 2000)
+            } else {
+                throw ("Erro ao realizar cadastro!")
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+        return false;
+    }
+
 </script>

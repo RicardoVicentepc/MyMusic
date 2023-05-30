@@ -26,8 +26,26 @@ function cadastrar(nome, sobreNome, email, senha) {
     return database.executar(instrucao);
 }
 
+function Recomendacao(email, genero, musica, desc) {
+    var instrucao2 =
+        `
+     insert into tbMusica values (null, '${musica}')
+    `
+    database.executar(instrucao2)
+    var instrucao =
+        `
+     insert into Recomendacao values
+        (null,null,(select max(idMusica) from tbmusica),'${email}', '${genero}', '${desc}');
+    `
+    console.log("Executando a instrução SQL : \n" + instrucao);
+
+    return database.executar(instrucao);
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
-    listar
+    listar,
+    Recomendacao
 };

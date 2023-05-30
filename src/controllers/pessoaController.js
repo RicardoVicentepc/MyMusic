@@ -1,12 +1,5 @@
 var pessoaModel = require("../models/pessoaModel");
 
-var sessoes = [];
-
-function testar(req, res) {
-    console.log("Entramos na pessoaController");
-    res.json("Estamos Funcionando!");
-}
-
 function listar(req, res) {
     pessoaModel.listar()
         .then(function (resultado) {
@@ -84,10 +77,35 @@ function cadastrar(req, res) {
             );
     }
 }
+function Recomendacao(req, res) {
+    var email = req.body.emailServer;
+    var genero = req.body.generoServer;
+    var musica = req.body.musicaServer;
+    var desc = req.body.descServer;
 
+    if (email == undefined) {
+        res.status(400).send("Seu Email está indefinido!")
+    } else if (genero == undefined) {
+        res.status(400).send("Seu Genero está indefinido!")
+    } else if (musica == undefined) {
+        res.status(400).send("Sua Música está indefinida!")
+    } else if (desc == undefined) {
+        res.status(400).send("Sua Descricao está indefinida!")
+    } else {
+        pessoaModel.Recomendacao(email, genero, musica, desc)
+            .then(function (resultado) {
+                res.json(resultado);
+            }
+            ).catch(function (erro) {
+                console.log(erro)
+                console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            })
+    }
+}
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    Recomendacao
 }
