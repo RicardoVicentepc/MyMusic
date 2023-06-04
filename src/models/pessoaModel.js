@@ -26,23 +26,34 @@ function cadastrar(nome, sobreNome, email, senha) {
     return database.executar(instrucao);
 }
 
-function Recomendacao(email, genero, musica, desc) {
-    var instrucao2 =
-        `
-     insert into tbMusica values (null, '${musica}')
-    `
-    database.executar(instrucao2)
-    var instrucao =
-        `
-     insert into Recomendacao values
-        (null,null,(select max(idMusica) from tbmusica),'${email}', '${genero}', '${desc}');
-    `
-    console.log("Executando a instrução SQL : \n" + instrucao);
+// function Recomendacao(email, genero, musica, desc) {
+//     var instrucao2 = `insert into tbMusica values (null, '${musica}')`
+//     database.executar(instrucao2)
+//     var instrucao =
+//         `
+//      insert into Recomendacao values
+//         (null,null,(select max(idMusica) from tbmusica),'${email}', '${genero}', '${desc}');
+//     `
+//     console.log("Executando a instrução SQL : \n" + instrucao);
 
-    return database.executar(instrucao);
+//     return database.executar(instrucao);
 
-}
+// }
 
+    function Recomendacao(email, genero, musica, desc){
+        return database.executar(`select count(nomeMusica) as idnome from tbMusica where nomeMusica = '${musica}'`)
+            .then(resultado => {
+                var varMusicid = resultado[0].idnome
+                if(varMusicid == 0){
+                    database.executar(`insert into tbMusica values (null, '${musica}', '${genero}')`);
+                        return database.executar(`insert into Recomendacao values (null, null, (select idMusica from tbmusica where nomeMusica ='${musica}'), '${email}', '${desc}')`)
+                }else{
+                    return false
+            }
+            }).catch((error)=>{
+                console.error(error)
+            })
+    }
 module.exports = {
     entrar,
     cadastrar,

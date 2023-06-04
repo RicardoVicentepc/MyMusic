@@ -19,7 +19,9 @@ nav {
     justify-content: space-between;
     list-style: none;
 }
-
+#sel_Genero{
+    display: block;
+}
 .container {
     width: 100%;
     display: flex;

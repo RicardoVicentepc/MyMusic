@@ -94,7 +94,11 @@ function Recomendacao(req, res) {
     } else {
         pessoaModel.Recomendacao(email, genero, musica, desc)
             .then(function (resultado) {
+                if(resultado == false){
+                    res.status(500).json(erro.sqlMessage);
+                }else
                 res.json(resultado);
+                                
             }
             ).catch(function (erro) {
                 console.log(erro)

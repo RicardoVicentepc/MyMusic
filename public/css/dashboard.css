@@ -1,0 +1,47 @@
+body{
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+}
+.graficosCima{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+.userCadastrados{
+    width: 700px;
+    height: 350px;
+    background-color: #181818de;
+}
+.recomendacao{
+    position: relative;
+    left: 7%;
+    width: 1200px;
+    height: 350px;
+    background-color: #181818de;
+}
+.qtdUser{
+    width: 700px;
+    height: 350px;
+    background-color: #181818de;
+}
+.generalizacao{
+    position: relative;
+    left: 7%;
+    width: 1200px;
+    height: 350px;
+    display: flex;
+}
+.genero{
+    width: 400px;
+    height: 350px;
+    justify-content: left;
+    background-color: #181818de;
+}
+.Avaliacao{
+    position: relative;
+    left: 5%;
+    width: 740px;
+    height: 350px;
+    background-color: #181818de;
+}
