@@ -3,10 +3,6 @@ var router = express.Router();
 
 var pessoaController = require("../controllers/pessoaController");
 
-// router.get("/", function (req, res){
-//     pessoaController.testar(req, res);
-// }); Rota de teste
-
 router.get("/listar", function (req, res) {
     pessoaController.listar(req, res);
 });

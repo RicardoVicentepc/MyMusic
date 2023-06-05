@@ -20,25 +20,12 @@ function entrar(email, senha) {
 
 function cadastrar(nome, sobreNome, email, senha) {
     var instrucao =
-        `INSERT INTO pessoa (nome, sobreNome, email, senha) values 
-        ('${nome}', '${sobreNome}', '${email}', '${senha}')`;
+        `INSERT INTO pessoa (nome, sobreNome, email, senha, dtCadastro) values 
+        ('${nome}', '${sobreNome}', '${email}', '${senha}', now())`;
     console.log("Executando a instrução SQL : \n" + instrucao);
     return database.executar(instrucao);
 }
 
-// function Recomendacao(email, genero, musica, desc) {
-//     var instrucao2 = `insert into tbMusica values (null, '${musica}')`
-//     database.executar(instrucao2)
-//     var instrucao =
-//         `
-//      insert into Recomendacao values
-//         (null,null,(select max(idMusica) from tbmusica),'${email}', '${genero}', '${desc}');
-//     `
-//     console.log("Executando a instrução SQL : \n" + instrucao);
-
-//     return database.executar(instrucao);
-
-// }
 
     function Recomendacao(email, genero, musica, desc){
         return database.executar(`select count(nomeMusica) as idnome from tbMusica where nomeMusica = '${musica}'`)
