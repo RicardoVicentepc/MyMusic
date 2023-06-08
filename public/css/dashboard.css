@@ -19,6 +19,7 @@ body{
     width: 1200px;
     height: 350px;
     background-color: #181818de;
+    overflow: auto;
 }
 .qtdUser{
     width: 700px;
@@ -44,4 +45,15 @@ body{
     width: 740px;
     height: 350px;
     background-color: #181818de;
+}
+table{
+    color: white;
+    border: 1px solid wheat;
+    width: 100%;
+    overflow: auto;
+    height: 10px;
+}
+tr, td{
+    border: 1px solid white;
+    text-align: center;
 }

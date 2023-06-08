@@ -1,7 +1,7 @@
-var dashModel = require("../models/dashboardModel");
+const dashModel = require("../models/dashboardModel");
 
-function dadosDashboard(res){
-    dashModel.dadosDashboard()
+function dadosJaneiro(req, res){
+    dashModel.dadosJaneiro()
         .then( function (resultado){
             if(resultado.length > 0)
                 res.status(200).json(resultado);
@@ -14,6 +14,125 @@ function dadosDashboard(res){
         });
 }
 
+
+function dadosFevereiro(req, res){
+    dashModel.dadosFevereiro()
+        .then( function (resultado){
+            if(resultado.length > 0)
+                res.status(200).json(resultado);
+            else
+                res.status(204).json("Nenhum resultado encontrado.");                
+        }).catch(function (erro){
+            console.log(erro)
+            console.log("Erro ao realizar query")
+            res.status(500).json("erro ao buscar resultado.");                
+        });
+}
+
+
+function dadosMarco(req, res){
+    dashModel.dadosMarco()
+        .then( function (resultado){
+            if(resultado.length > 0)
+                res.status(200).json(resultado);
+            else
+                res.status(204).json("Nenhum resultado encontrado.");                
+        }).catch(function (erro){
+            console.log(erro)
+            console.log("Erro ao realizar query")
+            res.status(500).json("erro ao buscar resultado.");                
+        });
+}
+
+
+function dadosMaio(req, res){
+    dashModel.dadosMaio()
+        .then( function (resultado){
+            if(resultado.length > 0)
+                res.status(200).json(resultado);
+            else
+                res.status(204).json("Nenhum resultado encontrado.");                
+        }).catch(function (erro){
+            console.log(erro)
+            console.log("Erro ao realizar query")
+            res.status(500).json("erro ao buscar resultado.");                
+        });
+}
+
+function dadosJunho(req, res){
+    dashModel.dadosJunho()
+        .then( function (resultado){
+            if(resultado.length > 0)
+                res.status(200).json(resultado);
+            else
+                res.status(204).json("Nenhum resultado encontrado.");                
+        }).catch(function (erro){
+            console.log(erro)
+            console.log("Erro ao realizar query")
+            res.status(500).json("erro ao buscar resultado.");                
+        });
+}
+
+function dadosAbril(req, res){
+    dashModel.dadosAbril()
+        .then( function (resultado){
+            if(resultado.length > 0)
+                res.status(200).json(resultado);
+            else
+                res.status(204).json("Nenhum resultado encontrado.");                
+        }).catch(function (erro){
+            console.log(erro)
+            console.log("Erro ao realizar query")
+            res.status(500).json("erro ao buscar resultado.");                
+        });
+}
+function dadosRecomendacao(req, res){
+    dashModel.dadosRecomendacao()
+        .then( function (resultado){
+            if(resultado.length > 0)
+                res.status(200).json(resultado);
+            else
+                res.status(204).json("Nenhum resultado encontrado.");                
+        }).catch(function (erro){
+            console.log(erro)
+            console.log("Erro ao realizar query")
+            res.status(500).json("erro ao buscar resultado.");                
+        });
+}
+function dadosRecomendacaoCadastrados(req, res){
+    dashModel.dadosRecomendacaoCadastrados()
+        .then( function (resultado){
+            if(resultado.length > 0)
+                res.status(200).json(resultado);
+            else
+                res.status(204).json("Nenhum resultado encontrado.");                
+        }).catch(function (erro){
+            console.log(erro)
+            console.log("Erro ao realizar query")
+            res.status(500).json("erro ao buscar resultado.");                
+        });
+}
+function dadosRecomendacaoNaoCadastrados(req, res){
+    dashModel.dadosRecomendacaoNaoCadastrados()
+        .then( function (resultado){
+            if(resultado.length > 0)
+                res.status(200).json(resultado);
+            else
+                res.status(204).json("Nenhum resultado encontrado.");                
+        }).catch(function (erro){
+            console.log(erro)
+            console.log("Erro ao realizar query")
+            res.status(500).json("erro ao buscar resultado.");                
+        });
+}
 module.exports = {
-    dadosDashboard
+    dadosAbril,
+    dadosFevereiro,
+    dadosJaneiro,
+    dadosJunho,
+    dadosMaio,
+    dadosMarco,
+    dadosRecomendacao,
+    dadosRecomendacaoCadastrados,
+    dadosRecomendacaoNaoCadastrados
 }

@@ -1,74 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/dashboard.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/dashboard.css">
+  <title>Document</title>
 </head>
-<body onload="obterDados()">
-   <div class="container">
+
+<body onload="obterDados(), DadosPorMes()">
+  <div class="container">
     <div class="graficosCima">
-        <div class="userCadastrados">
-            <canvas id="myChart"></canvas>
-        </div>
-        <div class="recomendacao"></div>
+      <div class="userCadastrados">
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="recomendacao">
+        <table>
+          <tr>
+            <th>id</th>
+            <th>email</th>
+            <th>genero</th>
+            <th>musica</th>
+            <th>descricao</th>
+            <th>editar</th>
+            <th>excluir</th>
+          </tr>
+          <tr>
+            <td id="td_id"></td>
+            <td id="td_email"></td>
+            <td id="td_genero"></td>
+            <td id="td_nome"></td>
+            <td id="td_descricao"></td>
+            <td id="td_Editar"></td>
+            <td id="td_Delete"></td>
+          </tr>
+        </table>
+      </div>
     </div>
     <div class="graficosCima">
-        <div class="qtdUser">
-            <h1>Total De Usúario</h1>
-    <div id="ExibirQtdUserSystems"  style="color: aqua; font-size: 2em;"></div>
+      <div class="qtdUser">
+        <h1>Total De Usúario</h1>
+        <div id="ExibirQtdUserSystems" style="color: aqua; font-size: 2em;"></div>
 
+      </div>
+      <div class="generalizacao">
+        <div class="genero">
+          <h3>Percentual de avaliacões cadastrados</h3>
+          <div id="id"></div>
+          <h3>Percentual de avaliacões cadastrados</h3>
+          <div id="idsd"></div>
         </div>
-        <div class="generalizacao">
-            <div class="genero">
-
-            </div>
-            <div class="Avaliacao"></div>
-        </div>
+        <div class="Avaliacao"></div>
+      </div>
     </div>
-   </div>
+  </div>
 </body>
+
 </html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
-const ctx = document.getElementById('myChart');
+  var listaUserPorMes = []
+  var listaDeRecomendacao = []
+  function DadosPorMesJaneiro() {
+    fetch('/dashboard/dadosJaneiro', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          listaUserPorMes.push(resposta[0].dadosjaneiro)
+          return resposta[0].dadosjaneiro
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
-      datasets: [{
-        label: 'Usuarios cadastrados por mês',
-        data: [23],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+  }
+  function DadosPorMesFevereiro() {
+    fetch('/dashboard/dadosFevereiro', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          listaUserPorMes.push(resposta[0].dadosFevereiro)
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
+
+  }
+  function DadosPorMesMaio() {
+    fetch('/dashboard/dadosMaio', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          listaUserPorMes.push(resposta[0].dadosMaio)
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
+
+  }
+  function DadosPorMesAbril() {
+    fetch('/dashboard/dadosAbril', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          listaUserPorMes.push(resposta[0].dadosAbril)
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
+
+  }
+  function DadosPorMesJunho() {
+    fetch('/dashboard/dadosJunho', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          listaUserPorMes.push(resposta[0].dadosJunho)
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
+
+  }
+  function DadosPorMesMarco() {
+    fetch('/dashboard/dadosMarco', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          listaUserPorMes.push(resposta[0].dadosMarco)
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
+
+  }
+  function obterDados() {
+    fetch('/pessoa/listar', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          var converterParaJSON = JSON.stringify(resposta)
+          var transformarParaVetor = JSON.parse(converterParaJSON)
+          ExibirQtdUserSystems.innerHTML = transformarParaVetor[0].PessoasCadastradas
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
+  }
+  function dadosRecomendacao() {
+    fetch('/dashboard/dadosRecomendacao', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          for(var i=0; i<resposta.length; i++){
+            td_id.innerHTML += resposta[i].idRecomendacao + '<br>'
+            td_email.innerHTML += resposta[i].email+ '<br>'
+            td_genero.innerHTML += resposta[i].genero+ '<br>'
+            td_nome.innerHTML += resposta[i].nomeMusica+ '<br>'
+            td_descricao.innerHTML += resposta[i].descricao+ '<br>'
+            td_Editar.innerHTML += 'Editar' + '<br>'
+            td_Delete.innerHTML += 'Excluir'+ '<br>'
+            listaDeRecomendacao.push(resposta[i])
+          }
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
+
+  }
+  function criarGrafico() {
+ 
+  
+  
+  const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+        datasets: [{
+          label: 'Usuarios cadastrados por mês',
+          data: listaUserPorMes,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
+    });
+  }
+  function dadosRecomendacoesCadastrados(){
+    fetch('/dashboard/dadosRecomendacaoCadastrados', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          id.innerHTML = resposta[0].RecomendacoesCadastradas
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
 
+  }
+  function dadosRecomendacoesNaoCadastrados(){
+    fetch('/dashboard/dadosRecomendacoesNaoCadastrados', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          idsd.innerHTML = resposta[0].RecomendacoesNaoCadastradas - 2
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
 
-    function obterDados(){
-        fetch('/pessoa/listar', {cache: 'no-store'}).then(function (response){
-            if(response.ok){
-                response.json().then(function(resposta){
-                    var converterParaJSON = JSON.stringify(resposta)
-                    var transformarParaVetor = JSON.parse(converterParaJSON)
-                    ExibirQtdUserSystems.innerHTML = transformarParaVetor[0].PessoasCadastradas
-                })
-            } else {
-                console.log('Nenhum dado encontrados')
-            }
-        }).catch(function (error){
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
-        });
-    }
+  }
+  function DadosPorMes() {
+    DadosPorMesJaneiro()
+    DadosPorMesFevereiro()
+    DadosPorMesMaio()
+    DadosPorMesAbril()
+    DadosPorMesMarco()
+    DadosPorMesJunho()
+    dadosRecomendacoesCadastrados()
+    dadosRecomendacoesNaoCadastrados()
+    setTimeout(()=>{
+      criarGrafico()
+      dadosRecomendacao()
+    },300)
+  }
+
 </script>
