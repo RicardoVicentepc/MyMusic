@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/dashboard.css">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
   <title>Document</title>
 </head>
 
@@ -16,53 +18,43 @@
         <canvas id="myChart"></canvas>
       </div>
       <div>
-        <div class="total">
-          <div class="flex">
-            <div class="quadrado">
-              <h4>Total De Usúario</h4>
-            </div>
-            <div class="quadrado2">
-              <h4>Total De avaliacões</h4>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="quadrado3">
-              <h3>Percentual de avaliacões não cadastradas</h3>
-              <div id="idsd"></div>
-            </div>
-            <div class="quadrado4">
-              <h4>Percentual de avaliacões cadastrados</h4>
-            <div id="id"></div>
-
-            </div>
-          </div>
+        <h2>Avaliacao</h2>
+        <div class="NaoCadastrados">
+          <h1 class="aposLogin">Após Login</h1>
+          <p id="NaoCadastrados"></p>
         </div>
       </div>
+      <div class="cadastradas">
+        <h1 class="posLogin">Pós Login</h1>
+        <p id="cadastradas"></p>
+      </div>
       <div class="Avaliacao">
-        <canvas id="estimativa"></canvas>
+        <canvas id="estimativa">
+
+        </canvas>
       </div>
     </div>
   </div>
   <div class="graficosCima">
     <div class="qtdUser">
-     
+
       <div class="total">
         <div class="flex">
           <div class="quadrado">
             <h4>Total De Usúario</h4>
-            <div id="ExibirQtdUserSystems" style="color: aqua; font-size: 2em;"></div>
+            <div id="ExibirQtdUserSystems" class="fontUsers"></div>
           </div>
-          <div class="quadrado2">
+          <div class="quadrado2" >
             <h4>Total De avaliacões</h4>
-            <div id="totalAvaliacao" style="color: aqua; font-size: 2em;"></div>
+            <div id="totalAvaliacao" class="fontUsers"></div>
           </div>
         </div>
         <div class="flex">
           <div class="quadrado3">
             <h4>Média De avaliacões</h>
-              <div id="mediaDeAvaliacao" style="color: aqua; font-size: 2em;"></div>
+              <div id="mediaDeAvaliacao" class="fontUsers"></div>
           </div>
-         
+
         </div>
       </div>
     </div>
@@ -71,7 +63,7 @@
     <!-- <h3>Percentual de avaliacões cadastrados</h3>
           <div id="id"></div>
           <h3>Percentual de avaliacões não cadastradas</h3>
-          <div id="idsd"></div> -->
+          <div id="NaoCadastrados"></div> -->
     <!-- </div> -->
     <!-- <div class="Avaliacao"> -->
     <!-- <canvas id="estimativa"></canvas> -->
@@ -79,25 +71,25 @@
     <!-- </div> -->
     <div class="recomendacao">
       <table>
-          <tr>
-            <th>id</th>
-            <th>email</th>
-            <th>genero</th>
-            <th>musica</th>
-            <th>descricao</th>
-            <th>editar</th>
-            <th>excluir</th>
-          </tr>
-          <tr>
-            <td id="td_id"></td>
-            <td id="td_email"></td>
-            <td id="td_genero"></td>
-            <td id="td_nome"></td>
-            <td id="td_descricao"></td>
-            <td id="td_Editar"></td>
-            <td id="td_Delete"></td>
-          </tr>
-        </table>
+        <tr>
+          <th>id</th>
+          <th>email</th>
+          <th>genero</th>
+          <th>musica</th>
+          <th>descricao</th>
+          <th>editar</th>
+          <th>excluir</th>
+        </tr>
+        <tr id="tr">
+          <td id="td_id"></td>
+          <td id="td_email"></td>
+          <td id="td_genero"></td>
+          <td id="td_nome"></td>
+          <td id="td_descricao"></td>
+          <td id="td_Editar"></td>
+          <td id="td_Delete"></td>
+        </tr>
+      </table>
     </div>
   </div>
   </div>
@@ -106,7 +98,7 @@
 </html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-
+  
   var listaUserPorMes = []
   var listaDeRecomendacao = []
   var listaDeEstimativa = []
@@ -218,13 +210,13 @@
       if (response.ok) {
         response.json().then(function (resposta) {
           for (var i = 0; i < resposta.length; i++) {
-            td_id.innerHTML += resposta[i].idRecomendacao + '<br>'
-            td_email.innerHTML += resposta[i].email + '<br>'
-            td_genero.innerHTML += resposta[i].genero + '<br>'
-            td_nome.innerHTML += resposta[i].nomeMusica + '<br>'
-            td_descricao.innerHTML += resposta[i].descricao + '<br>'
-            td_Editar.innerHTML += 'Editar' + '<br>'
-            td_Delete.innerHTML += 'Excluir' + '<br>'
+            td_id.innerHTML +='<br>' + resposta[i].idRecomendacao + '<br><br>'
+            td_email.innerHTML +='<br>' + resposta[i].email + '<br><br>'
+            td_genero.innerHTML +='<br>' + resposta[i].genero + '<br><br>'
+            td_nome.innerHTML +='<br>' + resposta[i].nomeMusica + '<br><br>'
+            td_descricao.innerHTML +='<br>' + resposta[i].descricao + '<br><br>'
+            td_Editar.innerHTML +='<br>' + `<button value="`+ i +`" onclick="Edits(`+ i + `)" id="btn_edits" class = "btnEditar">Editar</button>` + '<br><br>'
+            td_Delete.innerHTML +='<br>' + `<button value="`+ i +`" onclick="Edits(`+ i + `)" id="btn_excluir" class = "btnExcluir">Excluir</button>` + '<br><br>'
           }
         })
       } else {
@@ -246,10 +238,12 @@
         datasets: [{
           label: 'Usuarios cadastrados por mês',
           data: listaUserPorMes,
-          borderWidth: 1
+          borderWidth: 1,
+          borderColor: '#5D00D0',
         }]
       },
       options: {
+        responsive: true,
         scales: {
           y: {
             beginAtZero: true
@@ -272,7 +266,8 @@
         datasets: [{
           label: 'Porcentagem de crescimento para os proximos meses',
           data: listaDeEstimativa,
-          borderWidth: 1
+          borderWidth: 1,
+          borderColor: '#5D00D0',
         }]
       },
       options: {
@@ -303,10 +298,10 @@
       if (response.ok) {
         response.json().then(function (resposta) {
           recomendacaoForaDoSistema = resposta[0].RecomendacoesNaoCadastradas
-          idsd.innerHTML = (((resposta[0].RecomendacoesNaoCadastradas - recomendacaoDentroDoSistema) * 100) / (resposta[0].RecomendacoesNaoCadastradas)).toFixed(2)
-          id.innerHTML = ((recomendacaoDentroDoSistema * 100) / (recomendacaoForaDoSistema)).toFixed(2)
+          NaoCadastrados.innerHTML = (((resposta[0].RecomendacoesNaoCadastradas - recomendacaoDentroDoSistema) * 100) / (resposta[0].RecomendacoesNaoCadastradas)).toFixed(2) + `%`
+          cadastradas.innerHTML = ((recomendacaoDentroDoSistema * 100) / (recomendacaoForaDoSistema)).toFixed(2) + `%`
           totalAvaliacao.innerHTML = resposta[0].RecomendacoesNaoCadastradas
-          mediaDeAvaliacao.innerHTML = totalUsers / resposta[0].RecomendacoesNaoCadastradas
+          mediaDeAvaliacao.innerHTML = (totalUsers / resposta[0].RecomendacoesNaoCadastradas).toFixed(2)
         })
       } else {
         console.log('Nenhum dado encontrados')
@@ -342,5 +337,9 @@
     }, 650)
     dadosRecomendacao()
   }
-
+function Edits(i){
+    console.log(btn_edits.value)
+    console.log(btn_excluir.value)
+    
+  }
 </script>

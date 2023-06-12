@@ -5,6 +5,19 @@ a{
     text-decoration: none;
     color: white;
 }
+*::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #181818de;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #5D00D0;
+    border-radius: 20px;
+    border: 3px solid #181818de;
+  }
 body {
     margin: 10px;
     background-color: #121212;

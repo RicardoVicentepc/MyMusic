@@ -2,7 +2,22 @@ body{
     background-color: #121212;
     margin: 0;
     padding: 0;
+    font-family: 'Poppins';
+
 }
+*::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #181818de;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #5D00D0;
+    border-radius: 20px;
+    border: 3px solid #181818de;
+  }
 .graficosCima{
     display: flex;
     justify-content: space-evenly;
@@ -21,13 +36,21 @@ body{
     background-color: #181818de;
     overflow: auto;
 }
+.fontUsers{
+    color: white;
+    margin-top: 15%;
+    font-size: 1.5em;
+}
 .qtdUser{
     width: 500px;
     height: 450px;
-    background-color: #181818de;
     justify-content: center;
     position: relative;
     left: 2%;
+    color: #5D00D0;
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: bold;
 }
 .generalizacao{
     position: relative;
@@ -51,14 +74,41 @@ body{
 }
 table{
     color: white;
-    border: 1px solid wheat;
     width: 100%;
     overflow: auto;
     height: 10px;
 }
 tr, td{
-    border: 1px solid white;
     text-align: center;
+    border: 1px solid #8533e977;
+
+}
+td{
+    height: 50px;
+}
+th{
+    background-color: #8533e977;
+    font-size: larger;
+
+}
+.btnEditar{
+    background-color: #f566009f;
+    color: white;
+    font-weight: bold;
+    width: 5em;
+    height: 1.7em;
+    border-radius: .5em;
+    border-color: black;
+    position: relative;
+}
+.btnExcluir{
+    background-color: #f500009f;
+    color: white;
+    font-weight: bold;
+    width: 5em;
+    height: 1.7em;
+    border-radius: .5em;
+    border-color: black;
 }
 
 
@@ -70,7 +120,7 @@ tr, td{
 }
 .quadrado{
     width: 150px;
-    background-color: gray;
+    background-color: #181818de;
     height: 150px;
     margin-top: 3em;
     margin-left: 5em;
@@ -82,9 +132,37 @@ tr, td{
     }
 }
 
+.posLogin, .aposLogin{
+    color: #5D00D0;
+    
+}
+h2{
+    margin-top: -1.2em;
+    font-size: 2em;
+    color: #5D00D0;
+    position: relative;
+    left: 100%;
+    
+}
+p, h1{
+    font-size: 1.5em;
+    margin-top: 0;
+    font-weight: bold;
+
+}
+.NaoCadastrados, .cadastradas{
+    width: 150px;
+    height: 100px;
+    background-color: #181818de;
+    text-align: center;
+    color: white;
+    margin-top: 7em;
+    
+}
+
 .quadrado2{
     width: 150px;
-    background-color: gray;
+    background-color: #181818de;
     height: 150px;
     margin-top: 3em;
     margin-left: 5em;
@@ -99,7 +177,7 @@ tr, td{
 
 .quadrado3{
     width: 150px;
-    background-color: gray;
+    background-color: #181818de;
     height: 150px;
     margin-top: 3em;
     margin-left: 5em;
@@ -114,7 +192,7 @@ tr, td{
 }
 .quadrado4{
     width: 150px;
-    background-color: gray;
+    background-color: #181818de;
     height: 150px;
     margin-top: 3em;
     margin-left: 5em;
