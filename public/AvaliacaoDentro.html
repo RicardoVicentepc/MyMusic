@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="./css/avaliacao.css">
+</head>
+
+<body onload="emailAtual() ">
+  <div class="container">
+  <div class="nav">
+    <img src="./img/logo.png" width="300" alt="">
+
+    <div style="display: grid;">
+      <a href="./home.html" style="margin-top: 10em;">Chat</a>
+      <a href="./AvaliacaoDentro.html">Recomendação</a>
+      <a href="" style="margin-top: 15em;">Logout</a>
+    </div>
+  </div>
+  <div class="forms">
+    <section id="formulario">
+      <div class="BaseGray" id="BaseGray">
+        <div class="BaseGray2" id="BaseGray2">
+          <select id="sel_Genero" onchange="OutroGenero()">
+            <option value="" disabled selected>Me fala o gênero que você gosta</option>
+            <option value="Mpb">Mpb</option>
+            <option value="Rock">Rock</option>
+            <option value="Samba">Samba</option>
+            <option value="Funk">Funk</option>
+            <option value="Forró">Forró</option>
+            <option value="Sertanejo">Sertanejo</option>
+            <option value="Pagode">Pagode</option>
+            <option value="outro">Outro</option>
+          </select>
+          <div id="email">
+            <input type="text" id="ipt_email" placeholder="Me Diga Seu Email">
+          </div>
+          <div id="ExibirGeneroNovo"></div>
+          <input type="text" id="ipt_nomeMusica" placeholder="Me Diga Sua Música Favorita">
+          <textarea id="ipt_desc" style="resize: none;" maxlength="800"></textarea>
+          <button class="enviar" onclick="enviarForms()">Enviar</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+
+</html>
+<script>
+  function emailAtual() {
+      fetch('/pessoa/emailAtual', { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(resposta[0].email)
+          email.innerHTML = `<input type="text" value="${resposta[0].email}" id="ipt_email" placeholder="${resposta[0].email}" disabled>`
+        })
+      } else {
+        console.log('Nenhum dado encontrados')
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+    });
+  }
+  function OutroGenero() {
+    var genero = sel_Genero.value
+    if (genero == 'outro') {
+      BaseGray2.style.height = `58em`
+      BaseGray.style.height = `62em`
+      ExibirGeneroNovo.innerHTML = `<input class="New_Genero" type="text" placeholder="Insira o gênero desejado">`
+    } else
+      ExibirGeneroNovo.innerHTML = null
+  }
+  function enviarForms() {
+    var emailVar = ipt_email.value
+    var nomeMusicaVar = ipt_nomeMusica.value
+    var descVar = ipt_desc.value
+    var generoVar = sel_Genero.value
+    //  ipt_nomeMusica ipt_nomeMusica ipt_desc
+    if (generoVar == "" || descVar == "" || nomeMusicaVar == "" || emailVar == "") {
+      alert("Preencha o dados corretos")
+      return false
+    } else {
+
+    }
+    fetch("pessoa/Recomendar", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        generoServer: generoVar,
+        musicaServer: nomeMusicaVar,
+        descServer: descVar
+      })
+    }).then(function (resposta) {
+      console.log("resposta : ", resposta);
+
+      if (resposta.ok) {
+        setTimeout(() => {
+          window.location + "login.html"
+        }, 2000)
+      } else {
+        alert("Não pode cadastrar 2 vezes a mesma coisa")
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+    return false;
+  }
+
+
+
+</script>

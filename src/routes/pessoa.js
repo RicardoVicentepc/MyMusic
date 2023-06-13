@@ -7,6 +7,10 @@ router.get("/listar", function (req, res) {
     pessoaController.listar(req, res);
 });
 
+router.get("/emailAtual", function (req, res) {
+    pessoaController.emailAtualUser(req, res);
+});
+
 router.post("/cadastrar", function (req, res) {
     pessoaController.cadastrar(req, res);
 });

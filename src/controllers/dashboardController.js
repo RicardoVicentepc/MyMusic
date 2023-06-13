@@ -125,6 +125,22 @@ function dadosRecomendacaoNaoCadastrados(req, res){
             res.status(500).json("erro ao buscar resultado.");                
         });
 }
+function deletarAvaliacao(req, res){
+    var idAvaliacao = req.params.idAvaliacao;
+
+    dashModel.deletarAvaliacao(idAvaliacao)
+        .then(
+            function (resultado){
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro){
+                console.log(erro)
+                console.log("Erro ao deletar : " + erro.sqlMessage)
+                res.status(500).json(erro.sqlMessage)
+            }
+        )
+}
 module.exports = {
     dadosAbril,
     dadosFevereiro,
@@ -134,5 +150,6 @@ module.exports = {
     dadosMarco,
     dadosRecomendacao,
     dadosRecomendacaoCadastrados,
-    dadosRecomendacaoNaoCadastrados
+    dadosRecomendacaoNaoCadastrados,
+    deletarAvaliacao
 }

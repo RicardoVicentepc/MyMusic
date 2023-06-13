@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.nav{
+    width: 300px;
+    height: 100vh;
+    background-color: #181818de;
+}
+.forms{
+    position: relative;
+    margin-top: -10%;
+    left: 7%;
+    width: 100em;
+}
+a{
+    color: #5D00D0;
+    font-weight: bolder;
+    font-size: 2em;
+    margin-left: 1.3em;
+    margin-top: 2em;
+}

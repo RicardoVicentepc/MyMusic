@@ -42,6 +42,10 @@ function dadosRecomendacaoNaoCadastrados(){
 	on recomendacao.fkMusica = tbmusica.idMusica;`
     return database.executar(query)
 }
+function deletarAvaliacao(idAvaliacao){
+    var instrucao = `delete from recomendacao where idRecomendacao = ${idAvaliacao};`
+    return database.executar(instrucao)
+}
 module.exports = {
     dadosJaneiro,
     dadosAbril,
@@ -51,5 +55,6 @@ module.exports = {
     dadosMaio,
     dadosRecomendacao,
     dadosRecomendacaoCadastrados,
-    dadosRecomendacaoNaoCadastrados
+    dadosRecomendacaoNaoCadastrados,
+    deletarAvaliacao
 }

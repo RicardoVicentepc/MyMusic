@@ -141,10 +141,14 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-
-                    setTimeout(function () {
+                    if(emailVar != 'admin' && senhaVar != '123'){
+                        setTimeout(function () {
+                            window.location = "./AvaliacaoDentro.html";
+                        }, 1000);
+                    }else{
                         window.location = "./dashboard.html";
-                    }, 1000);
+
+                    }
                 });
             } else {
                 console.log("Houve um erro ao tentar realizar o login!");

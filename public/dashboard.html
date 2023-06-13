@@ -77,7 +77,6 @@
           <th>genero</th>
           <th>musica</th>
           <th>descricao</th>
-          <th>editar</th>
           <th>excluir</th>
         </tr>
         <tr id="tr">
@@ -86,7 +85,6 @@
           <td id="td_genero"></td>
           <td id="td_nome"></td>
           <td id="td_descricao"></td>
-          <td id="td_Editar"></td>
           <td id="td_Delete"></td>
         </tr>
       </table>
@@ -215,8 +213,7 @@
             td_genero.innerHTML +='<br>' + resposta[i].genero + '<br><br>'
             td_nome.innerHTML +='<br>' + resposta[i].nomeMusica + '<br><br>'
             td_descricao.innerHTML +='<br>' + resposta[i].descricao + '<br><br>'
-            td_Editar.innerHTML +='<br>' + `<button value="`+ i +`" onclick="Edits(`+ i + `)" id="btn_edits" class = "btnEditar">Editar</button>` + '<br><br>'
-            td_Delete.innerHTML +='<br>' + `<button value="`+ i +`" onclick="Edits(`+ i + `)" id="btn_excluir" class = "btnExcluir">Excluir</button>` + '<br><br>'
+            td_Delete.innerHTML +='<br>' + `<button value="2" onclick="Edits(`+ (i+1) + `)" id="btn_excluir" class ="btnExcluir">Excluir</button>` + '<br><br>'
           }
         })
       } else {
@@ -337,9 +334,23 @@
     }, 650)
     dadosRecomendacao()
   }
-function Edits(i){
-    console.log(btn_edits.value)
-    console.log(btn_excluir.value)
-    
-  }
+function Edits(idAvaliacao) {
+    fetch(`/dashboard/deletar/${idAvaliacao}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            window.alert("Success: 200!");
+            window.location = "./dashboard.html"
+        } else if (resposta.status == 404) {
+            window.alert("Error: 404!");
+        } else {
+            throw ("An error occurred while trying to make the request! Response code: " + resposta.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERROR: ${resposta}`);
+    });
+}
 </script>

@@ -30,4 +30,9 @@ router.get("/dadosRecomendacoesNaoCadastrados", function (req, res) {
     dashController.dadosRecomendacaoNaoCadastrados(req, res);
 });
 
+router.delete("/deletar/:idAvaliacao", function (req, res){
+    dashController.deletarAvaliacao(req, res);
+});
+
+
 module.exports = router;
