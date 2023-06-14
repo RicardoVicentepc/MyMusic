@@ -10,15 +10,17 @@
     <title>MyMusic</title>
 </head>
 
-<body>
+<body onload="setTimeout(()=>{
+   player(1) 
+}, 4000)">
 
     <header>
         <div class="container">
             <img class="logo" src="./img/logo.png" id="logo" alt="MyMusic">
             <nav>
-                <li class="info">Home</li>
-                <li class="info">Sobre Mim</li>
-                <li class="info">Generos</li>
+                <li class="info"><a href="./home.html">Home</a></li>
+                <li class="info"><a href="#sobreMim">Sobre Mim</a></li>
+                <li class="info"><a href="#generos">Generos</a></li>
                 <li class="info"><a href="./login.html">Login</a></li>
             </nav>
         </div>
@@ -137,16 +139,15 @@
     <footer>
         <div class="painelMusic">
             <div class="sessaoArtista">
-                <div class="fotoArtista"><img src="./img/Eu.jpg" width="97" alt=""></div>
-                <div class="nomeMusica">Meu Mundo Louco</div>
-                <div class="nomeArtista">Ricardo Vicente</div>
-                <div class="life"></div>
+                <div class="fotoArtista" id="fotoArtista"><img src="./img/Eu.jpg" width="97" alt=""></div>
+                <div class="nomeMusica" id="NomeMusica">Meu Mundo Louco</div>
+                <div class="nomeArtista" id="NomeAutor">Ricardo Vicente</div>
             </div>
             <div class="playerMusica">
                 <button class="botaoPlayer" onclick="player()" id="btn"><img class="imgPlay" id="imgPlay"
                         src="./img/iconPlay.png"></button>
-                <img class="imgskipRight" src="./img/SkipIcon.png" alt="">
-                <img class="imgskipLeft" src="./img/SkipIcon.png" alt="">
+                <img class="imgskipRight" onclick="MudarMusica()" src="./img/SkipIcon.png" alt="">
+                <img class="imgskipLeft" src="./img/SkipIcon.png" onclick="MudarMusicaParaTras()" alt="">
                 <div class="barraMusica"></div>
             </div>
             <div class="snippets">
@@ -155,11 +156,10 @@
                 </div>
                 <div class="aumentarVolume"></div>
                 <img class="aumentarImg" src="./img/AumentarTela.png" alt="">
+                <button onclick="topFunction()" id="myBtn" title="Go to top">👾</button>
             </div>
-            <div style="display: none;">
-                <audio id="player" src="./music/mchollywood-baile-ta-pocando-feat-ngks-miticodj-b6f7cdd5.mp3" controls
-                    loop>
-                </audio>
+            <div style="display: none;" id="music">
+                <audio id="player" src="./music/audioExplicativo.mp3" controls loop></audio>
             </div>
         </div>
         </div>
@@ -169,8 +169,119 @@
 
 </html>
 <script>
+    var listaMusica = [
+    musica1 = {
+        nomeMusica : "Chove, Chuva",
+        autor: "Jorge Ben Jor",
+        fotoArtista: `<img src="./img/JorgeBenJor.jpg" width="97" height="94" alt="">`,
+        musica : `<audio id="player" src="./music/choveChuva.mp3" controls loop></audio>`
+
+    },
+    musica2 = {
+        nomeMusica : "Como Tudo Deve Ser",
+        autor: "Charlie Brown Jr.",
+        fotoArtista: `<img src="./img/CharlieBrown.png" width="97" height="94" alt="">`,
+        musica : `<audio id="player" src="./music/comoTudoDeveSer.mp3" controls loop></audio>`
+
+    },
+    musica3 = {
+        nomeMusica : "Quero Ser Feliz Também",
+        autor: "Natiruts",
+        fotoArtista: `<img src="./img/banda-natiruts.jpg" width="97" height="94" alt="">`,
+        musica : `<audio id="player" src="./music/queroSerFeliz.mp3" controls loop></audio>`
+
+    },
+    musica4 = {
+        nomeMusica : "Ela Partiu",
+        autor: "Tim Maia",
+        fotoArtista: `<img src="./img/TimMaia.png" width="97" height="94" alt="">`,
+        musica : `<audio id="player" src="./music/ElaPartiu.mp3" controls loop></audio>`
+
+    }   
+    ]
     var i = 0
-    function player() {
+    function MudarMusica(){
+        fotoArtista.innerHTML = listaMusica[i].fotoArtista
+        NomeMusica.innerHTML =  listaMusica[i].nomeMusica
+        NomeAutor.innerHTML = listaMusica[i].autor
+        music.innerHTML = listaMusica[i].musica
+        document.getElementById('player').play()
+        btn.innerHTML = `
+            <style>
+                .imgskipLeft{
+                    top: 1.8%;
+                }
+                 .imgskipRight {
+                    top: 1.9%;
+                }
+                .barraMusica{
+                    top: 2.7%
+                }
+            #imgPlay{
+                left:0;
+            </style>
+            <img class="imgPlay" id="imgPlay" src="./img/botao-de-pausa.png">
+            `
+        i++
+        if(i == 4)[
+            i = 0
+        ]
+
+    }
+    
+    function MudarMusicaParaTras(){
+        i--
+        fotoArtista.innerHTML = listaMusica[i].fotoArtista
+        NomeMusica.innerHTML =  listaMusica[i].nomeMusica
+        NomeAutor.innerHTML = listaMusica[i].autor
+        music.innerHTML = listaMusica[i].musica
+        document.getElementById('player').play()
+        btn.innerHTML = `
+            <style>
+                .imgskipLeft{
+                    top: 1.8%;
+                }
+                 .imgskipRight {
+                    top: 1.9%;
+                }
+                .barraMusica{
+                    top: 2.7%
+                }
+            #imgPlay{
+                left:0;
+            </style>
+            <img class="imgPlay" id="imgPlay" src="./img/botao-de-pausa.png">
+            `
+        if(i == 0)[
+            i = 4
+        ]
+
+    }
+    
+    var i = 0
+    function player(inicio) {
+        if (inicio == 1) {
+            music.innerHTML = `<audio id="player" src="./music/audioExplicativo.mp3" controls loop></audio>`
+            document.getElementById('player').play()
+            i = 0
+            btn.innerHTML = `
+            <style>
+                .imgskipLeft{
+                    top: 1.8%;
+                }
+                 .imgskipRight {
+                    top: 1.9%;
+                }
+                .barraMusica{
+                    top: 2.7%
+                }
+            #imgPlay{
+                left:0;
+            </style>
+            <img class="imgPlay" id="imgPlay" src="./img/botao-de-pausa.png">
+            `
+            return true
+        }
         if (i == 1) {
             document.getElementById('player').play()
             i = 0
@@ -261,5 +372,22 @@
         });
         return false;
     }
+    let mybutton = document.getElementById("myBtn");
 
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 </script>
