@@ -15,6 +15,7 @@ function listar(req, res) {
         }
         );
 }
+
 function emailAtualUser(req, res){
     pessoaModel.emailAtualUser()
     .then(function (resultado) {
@@ -91,6 +92,31 @@ function cadastrar(req, res) {
             );
     }
 }
+
+function editar(req, res) {
+    var idPessoa = req.body.idPessoaServer;
+    var nome = req.body.nomeServer;
+    var sobrenome = req.body.sobrenomeServer;
+    var email= req.body.emailServer;
+    var senha = req.body.senhaServer;
+    pessoaModel.editarPerfil(idPessoa, nome, sobrenome, email,senha)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
+
+
 function Recomendacao(req, res) {
     var email = req.body.emailServer;
     var genero = req.body.generoServer;
@@ -126,5 +152,6 @@ module.exports = {
     cadastrar,
     listar,
     Recomendacao,
-    emailAtualUser
+    emailAtualUser,
+    editar
 }

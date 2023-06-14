@@ -1,0 +1,63 @@
+body{
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+
+}
+.container {
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+}
+.logo{
+    margin-left: 5%;
+    width: 350px;
+    margin-right: auto;
+}
+.imgChat, .imgPerfil{
+    width: 60px;
+    position: relative;
+    top: 55%;
+    left: 5%;
+    height: 60px;
+}
+.imgPerfil{
+    top: 77%;
+}
+.imgRecomendacao, .imgSair{
+    width: 60px;
+    position: relative;
+    top: 55%;
+    left: 5%;
+    height: 60px;
+}
+.imgSair{
+    top: 87%;
+}
+
+
+.nav {
+    width: 410px;
+    height: 100vh;
+    background-color: #181818de;
+    margin-bottom: 2em;
+}
+
+a {
+    color: #5D00D0;
+    font-weight: bolder;
+    font-size: 2em;
+    margin-left: 3.3em;
+    margin-top: 2em;
+    text-decoration: none;
+}
+.chat {
+    position: relative;
+    left: 70%;
+}
+a:hover{
+    transition: 1s;
+    font-size: 2.1em;
+    color: #FFF;
+}

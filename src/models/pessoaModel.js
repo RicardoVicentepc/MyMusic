@@ -8,15 +8,31 @@ function listar() {
 }
 var emailUser = null
 function entrar(email, senha) {
-    emailUser = email 
+    emailUser = email
+    todosdadosuser(emailUser)
     console.log("ACESSEI O Pessoa MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha);
     var instrucao =
         `SELECT * FROM pessoa WHERE email = '${email}' AND senha = '${senha}'`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-function emailAtualUser(){
-    return database.executar(`select email from pessoa where email='${emailUser}'`)
+function emailAtualUser() {
+    return database.executar(`select idpessoa,email from pessoa where email='${emailUser}'`)
+}
+function todosdadosuser(emailUser) {
+    return new Promise((resolve, reject) => {
+        database.executar(`
+          SELECT idpessoa FROM pessoa WHERE email='${emailUser}'
+        `)
+          .then((rows) => {
+            if(rows.length == 0){
+                const idPessoa = rows[0].idpessoa;
+
+                return database.executar(`SELECT nome, sobreNome, email, senha FROM pessoa WHERE idPessoa = ${idPessoa};`);
+            }
+          })
+        })
+
 }
 
 function cadastrar(nome, sobreNome, email, senha) {
@@ -28,24 +44,35 @@ function cadastrar(nome, sobreNome, email, senha) {
 }
 
 
-    function Recomendacao(email, genero, musica, desc){
-        return database.executar(`select count(nomeMusica) as idnome from tbMusica where nomeMusica = '${musica}'`)
-            .then(resultado => {
-                var varMusicid = resultado[0].idnome
-                if(varMusicid == 0){
-                    database.executar(`insert into tbMusica values (null, '${musica}', '${genero}')`);
-                        return database.executar(`insert into Recomendacao values (null, null, (select idMusica from tbmusica where nomeMusica ='${musica}'), '${email}', '${desc}')`)
-                }else{
-                    return false
+function Recomendacao(email, genero, musica, desc) {
+    return database.executar(`select count(nomeMusica) as idnome from tbMusica where nomeMusica = '${musica}'`)
+        .then(resultado => {
+            var varMusicid = resultado[0].idnome
+            if (varMusicid == 0) {
+                database.executar(`insert into tbMusica values (null, '${musica}', '${genero}')`);
+                return database.executar(`insert into Recomendacao values (null, null, (select idMusica from tbmusica where nomeMusica ='${musica}'), '${email}', '${desc}')`)
+            } else {
+                return false
             }
-            }).catch((error)=>{
-                console.error(error)
-            })
-    }
+        }).catch((error) => {
+            console.error(error)
+        })
+}
+
+var idAtual = null
+function editarPerfil(idPessoa, nome, sobreNome, email, senha) {
+    idAtual = idPessoa
+    var instrucao = `update pessoa set nome = '${nome}', sobreNome = '${sobreNome}', email='${email}', senha='${senha}' where idPessoa = ${idPessoa};
+    `
+    return database.executar(instrucao)
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     Recomendacao,
-    emailAtualUser
+    emailAtualUser,
+    editarPerfil,
+    todosdadosuser
 };
