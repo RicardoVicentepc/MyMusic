@@ -6,9 +6,7 @@ var pessoaController = require("../controllers/pessoaController");
 router.get("/listar", function (req, res) {
     pessoaController.listar(req, res);
 });
-// router.get("/todosDados", function (req, res) {
-//     pessoaController.todosdadosuser(req, res);
-// });
+
 router.get("/emailAtual", function (req, res) {
     pessoaController.emailAtualUser(req, res);
 });

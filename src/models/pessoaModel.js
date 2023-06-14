@@ -9,7 +9,6 @@ function listar() {
 var emailUser = null
 function entrar(email, senha) {
     emailUser = email
-    todosdadosuser(emailUser)
     console.log("ACESSEI O Pessoa MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha);
     var instrucao =
         `SELECT * FROM pessoa WHERE email = '${email}' AND senha = '${senha}'`;
@@ -17,22 +16,7 @@ function entrar(email, senha) {
     return database.executar(instrucao);
 }
 function emailAtualUser() {
-    return database.executar(`select idpessoa,email from pessoa where email='${emailUser}'`)
-}
-function todosdadosuser(emailUser) {
-    return new Promise((resolve, reject) => {
-        database.executar(`
-          SELECT idpessoa FROM pessoa WHERE email='${emailUser}'
-        `)
-          .then((rows) => {
-            if(rows.length == 0){
-                const idPessoa = rows[0].idpessoa;
-
-                return database.executar(`SELECT nome, sobreNome, email, senha FROM pessoa WHERE idPessoa = ${idPessoa};`);
-            }
-          })
-        })
-
+    return database.executar(`select idpessoa,email, nome, sobreNome, senha from pessoa where email='${emailUser}'`)
 }
 
 function cadastrar(nome, sobreNome, email, senha) {
@@ -59,7 +43,6 @@ function Recomendacao(email, genero, musica, desc) {
         })
 }
 
-var idAtual = null
 function editarPerfil(idPessoa, nome, sobreNome, email, senha) {
     idAtual = idPessoa
     var instrucao = `update pessoa set nome = '${nome}', sobreNome = '${sobreNome}', email='${email}', senha='${senha}' where idPessoa = ${idPessoa};
@@ -74,5 +57,4 @@ module.exports = {
     Recomendacao,
     emailAtualUser,
     editarPerfil,
-    todosdadosuser
 };

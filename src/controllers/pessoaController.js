@@ -153,5 +153,5 @@ module.exports = {
     listar,
     Recomendacao,
     emailAtualUser,
-    editar
+    editar,
 }

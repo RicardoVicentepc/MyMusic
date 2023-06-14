@@ -1,114 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="icon" type="image/png" href="./img/fone-de-ouvido.png"/>
+    <link rel="icon" type="image/png" href="./img/fone-de-ouvido.png" />
     <link rel="stylesheet" href="./css/perfil.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 </head>
-<body onload="emailAtual(), todosdados()">
+
+<body onload="dadosUser()">
     <div class="container">
         <div class="nav">
             <img class="logo" src="./img/logo.png" width="300" alt="">
-            <div style="display: grid;"> 
+            <div style="display: grid;">
                 <div style="display: flex;">
-                <img src="./img/usuario-de-perfil.png" class="imgPerfil"><a href="./perfil.html" style="margin-top: 6em; margin-left: 10%;">Perfil</a>
-            </div>
-                <div style="display: flex;">
-                    <img src="./img/web-chat.png" class="imgChat"><a href="./chat.html" style=" margin-left: 10%;">Chat</a>
+                    <img src="./img/usuario-de-perfil.png" class="imgPerfil"><a href="./perfil.html"
+                        style="margin-top: 6em; margin-left: 10%;">Perfil</a>
                 </div>
                 <div style="display: flex;">
-                    <img src="./img/recomendado.png" class="imgRecomendacao"> <a href="./AvaliacaoDentro.html" style="margin-left: 10%;">Recomendação</a>
+                    <img src="./img/web-chat.png" class="imgChat"><a href="./chat.html"
+                        style=" margin-left: 10%;">Chat</a>
                 </div>
                 <div style="display: flex;">
-                    <img src="./img/sair.png" class="imgSair">  <a href="./home.html" style="margin-top: 12em; margin-left: 10%;">Logout</a>
+                    <img src="./img/recomendado.png" class="imgRecomendacao"> <a href="./AvaliacaoDentro.html"
+                        style="margin-left: 10%;">Recomendação</a>
+                </div>
+                <div style="display: flex;">
+                    <img src="./img/sair.png" class="imgSair"> <a href="./home.html"
+                        style="margin-top: 12em; margin-left: 10%;">Logout</a>
                 </div>
             </div>
         </div>
-        <div>
-
+        <div class="recomendacao">
+            <table>
+                <tr>
+                    <th>nome</th>
+                    <th>Sobrenome</th>
+                    <th>email</th>
+                    <th>senha</th>
+                    <th>editar</th>
+                </tr>
+                <tr id="tr">
+                    <td id="td_nome"></td>
+                    <td id="td_sobrenome"></td>
+                    <td id="td_email"></td>
+                    <td id="td_senha"></td>
+                    <td id="td_Editar"><button value="${resposta[0].idPessoa}" class = "btnEditar" id="myBtn" class ="btnExcluir">Editar</button></td>
+                </tr>
+            </table>
         </div>
     </div>
 
 
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
     <input type="text" id="ipt_nome" placeholder="alterar nome">
     <input type="text" id="ipt_sobreNome" placeholder="alterar sobrenome">
     <input type="text" id="ipt_email" placeholder="alterar email">
     <input type="text" id="ipt_senha" placeholder="alterar senha">
-    <button onclick="editar()"></button>
+    <button onclick="editar()" class="btnEditarDentroModal">Editar</button>
+  </div>
+
+</div>
+
 </body>
+
 </html>
 
 <script>
     var id = null
-     function emailAtual() {
-      fetch('/pessoa/emailAtual', { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (resposta) {
-            id =  resposta[0].idpessoa
-            console.log(resposta[0].idpessoa)
+    function dadosUser() {
+        fetch('/pessoa/emailAtual', { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    td_nome.innerHTML = resposta[0].nome
+                    td_sobrenome.innerHTML = resposta[0].sobreNome
+                    td_email.innerHTML = resposta[0].email
+                    td_senha.innerHTML = resposta[0].senha
+                    id = resposta[0].idpessoa
+                    console.log(resposta)
 
-        })
-      } else {
-        console.log('Nenhum dado encontrados')
-      }
-    }).catch(function (error) {
-      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
-    });
-  }
-function todosdados() {
-      fetch('/pessoa/todosDados', { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (resposta) {
-            console.log(resposta)
-        })
-      } else {
-        console.log('Nenhum dado encontrados')
-      }
-    }).catch(function (error) {
-      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
-    });
-  }
-  function editar() {
-    var nomeVar = ipt_nome.value
-    var sobreNomeVar = ipt_sobreNome.value
-    var emailVar = ipt_email.value
-    var senhaVar = ipt_senha.value
-
-    if(nomeVar == "" && sobreNomeVar == "" && emailVar == "" && senhaVar == ""){
-        alert("ERROR")
-    }else{
-
-
-        fetch(`/pessoa/Editar/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idPessoaServer: id,
-                nomeServer: nomeVar,
-                sobrenomeServer: sobreNomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.alert("Deu 200!");
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
+                })
             } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                console.log('Nenhum dado encontrados')
             }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
         });
     }
-}
 
-  
+    function editar() {
+        var nomeVar = ipt_nome.value
+        var sobreNomeVar = ipt_sobreNome.value
+        var emailVar = ipt_email.value
+        var senhaVar = ipt_senha.value
+
+        if (nomeVar == "" && sobreNomeVar == "" && emailVar == "" && senhaVar == "") {
+            alert("ERROR")
+        } else {
+
+
+            fetch(`/pessoa/Editar/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idPessoaServer: id,
+                    nomeServer: nomeVar,
+                    sobrenomeServer: sobreNomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+                    alert("Alteração feita com sucesso, faça login com as credenciais novas.")
+                    setTimeout(() => {
+                        window.location = "./login.html"
+                    }, 2000);
+                } else if (resposta.status == 404) {
+                    window.alert("Deu 404!");
+                } else {
+                    throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
+    }
+
+    var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 </script>
