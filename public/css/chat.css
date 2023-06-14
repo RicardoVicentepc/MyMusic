@@ -42,7 +42,7 @@ body {
     height: 60px;
 }
 .imgSair{
-    top: 87%;
+    top: 80%;
 }
 * {
     margin: 0;
@@ -99,7 +99,7 @@ button {
 }
 
 .messages {
-    width: 1600px;
+    width: 1000px;
     height: 900px;
     margin: 20px 0;
     border: 2px solid #181818de;

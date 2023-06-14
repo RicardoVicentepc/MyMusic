@@ -25,22 +25,21 @@ body{
     margin-top: 5%;
 }
 .userCadastrados{
-    width: 570px;
-    height: 300px;
+    width: 446px;
+    height: 229px;
     background-color: #181818de;
     position: relative;
-    left: 10%;
+    left: 6%;
 }
 .recomendacao{
     position: relative;
     top: 50%;
-    width: 1100px;
+    width: 941px;
     height: 450px;
     background-color: #181818de;
     overflow: auto;
-    left: 4%;
     left: 7%;
-    margin-top: -745px;
+    margin-top: -685px;
 }
 .fontUsers{
     color: white;
@@ -57,7 +56,7 @@ body{
     font-size: 1.2em;
     text-align: center;
     font-weight: bold;
-    margin-top: -798px;
+    margin-top: -685px;
 
 }
 .generalizacao{
@@ -75,9 +74,10 @@ body{
 }
 .Avaliacao{
     position: relative;
-    left: 25%;
+    left: 153%;
     width: 570px;
     height: 300px;
+    top: 1%;
     background-color: #181818de;
 }
 table{
@@ -166,15 +166,17 @@ p, h1{
     color: white;
     margin-top: 6em;    
     position: relative;
-    left: 120%;
+    left: 66%;
 }
 .h2Avaliacao{
     position: relative;
-    left: 205%;
+    left: 151%;
 }
 .cadastradas{
-    left: 21.5%;
-    margin-top: 6.67em;    
+    left: 17.5%;
+    margin-top: 6.67em; 
+    height: 100.5px;
+    top: -.3%;   
 
 }
 
@@ -191,6 +193,13 @@ p, h1{
     from{
         transform: translateY(-150px);
     }
+}
+#estimativa{
+    position: relative;
+    right: 304%;
+    height: 223px !important;
+    background-color: #181818;
+    width: 446px !important;
 }
 
 .quadrado3{
@@ -244,7 +253,7 @@ p, h1{
     height: 60px;
 }
 .imgSair{
-    top: 87%;
+    top: 81%;
 }
 * {
     margin: 0;
