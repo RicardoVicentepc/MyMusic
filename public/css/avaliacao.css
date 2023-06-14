@@ -3,7 +3,7 @@ body{
     padding: 0;
 }
 .nav{
-    width: 300px;
+    width: 410px;
     height: 100vh;
     background-color: #181818de;
 }
@@ -19,4 +19,34 @@ a{
     font-size: 2em;
     margin-left: 1.3em;
     margin-top: 2em;
+}
+.logo{
+    margin-left: 5%;
+    width: 350px;
+    margin-right: auto;
+}
+.imgChat, .imgPerfil{
+    width: 60px;
+    position: relative;
+    top: 55%;
+    left: 5%;
+    height: 60px;
+}
+.imgPerfil{
+    top: 77%;
+}
+.imgRecomendacao, .imgSair{
+    width: 60px;
+    position: relative;
+    top: 55%;
+    left: 5%;
+    height: 60px;
+}
+.imgSair{
+    top: 87%;
+}
+a:hover{
+    transition: 1s;
+    font-size: 2.1em;
+    color: #FFF;
 }

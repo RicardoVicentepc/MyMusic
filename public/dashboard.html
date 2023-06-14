@@ -12,13 +12,33 @@
 </head>
 
 <body onload="obterDados(), DadosPorMes()">
+
+  
   <div class="container">
+    <div class="nav">
+      <img class="logo" src="./img/logo.png" width="300" alt="">
+
+      <div style="display: grid;"> 
+          <div style="display: flex;">
+          <img src="./img/usuario-de-perfil.png" class="imgPerfil"><a href="./chat.html" style="margin-top: 6em; margin-left: 10%;">Perfil</a>
+      </div>
+          <div style="display: flex;">
+              <img src="./img/web-chat.png" class="imgChat"><a href="./chat.html" style=" margin-left: 10%;">Chat</a>
+          </div>
+          <div style="display: flex;">
+              <img src="./img/recomendado.png" class="imgRecomendacao"> <a href="./AvaliacaoDentro.html" style="margin-left: 10%;">Recomendação</a>
+          </div>
+          <div style="display: flex;">
+              <img src="./img/sair.png" class="imgSair">  <a href="./home.html" style="margin-top: 12em; margin-left: 10%;">Logout</a>
+          </div>
+      </div>
+  </div>
     <div class="graficosCima">
       <div class="userCadastrados">
         <canvas id="myChart"></canvas>
       </div>
       <div>
-        <h2>Avaliacao</h2>
+        <h2 class="h2Avaliacao">Avaliacao</h2>
         <div class="NaoCadastrados">
           <h1 class="aposLogin">Após Login</h1>
           <p id="NaoCadastrados"></p>

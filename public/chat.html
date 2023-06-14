@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.7.0.slim.js"
         integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="./css/chat.css">
 </head>
 
@@ -17,14 +18,38 @@
     setTimeout(() => {
         emailAtual()
     }, 100);">
-    <form id="chat">
-        <div id="emailUser">
-            <input type="text" name="username" placeholder="digite seu user" disabled>
+    <div class="container">
+        <div class="nav">
+            <img class="logo" src="./img/logo.png" width="300" alt="">
+
+            <div style="display: grid;"> 
+                <div style="display: flex;">
+                <img src="./img/usuario-de-perfil.png" class="imgPerfil"><a href="./chat.html" style="margin-top: 6em; margin-left: 10%;">Perfil</a>
+            </div>
+                <div style="display: flex;">
+                    <img src="./img/web-chat.png" class="imgChat"><a href="./chat.html" style=" margin-left: 10%;">Chat</a>
+                </div>
+                <div style="display: flex;">
+                    <img src="./img/recomendado.png" class="imgRecomendacao"> <a href="./AvaliacaoDentro.html" style="margin-left: 10%;">Recomendação</a>
+                </div>
+                <div style="display: flex;">
+                    <img src="./img/sair.png" class="imgSair">  <a href="./home.html" style="margin-top: 12em; margin-left: 10%;">Logout</a>
+                </div>
+            </div>
         </div>
-        <div class="messages"></div>
-        <input type="text" name="message" id="message" placeholder="digite sua mensagem">
-        <button type="submit">Enviar</button>
-    </form>
+        <div class="chat">
+            <form id="chat">
+                <div id="emailUser" style="display: none;">
+                    <input type="text" name="username" placeholder="digite seu user" disabled>
+                </div>
+                <div class="messages"></div>
+                <div style="display: flex;">
+                    <input type="text" name="message" id="message" placeholder="digite sua mensagem">
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script>
 
         var socket = io('http://localhost:3333');
