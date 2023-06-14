@@ -12,28 +12,34 @@
     <link rel="stylesheet" href="./css/chat.css">
 </head>
 
-<body>
+<body onload=" retornarMensagem(),
+
+    setTimeout(() => {
+        emailAtual()
+    }, 100);">
     <form id="chat">
-        <input type="text" name="username" placeholder="digite seu user">
+        <div id="emailUser">
+            <input type="text" name="username" placeholder="digite seu user" disabled>
+        </div>
         <div class="messages"></div>
-        <input type="text" name="message" placeholder="digite sua mensagem">
+        <input type="text" name="message" id="message" placeholder="digite sua mensagem">
         <button type="submit">Enviar</button>
     </form>
-    <script >
+    <script>
 
         var socket = io('http://localhost:3333');
 
         function renderMessage(message) {
-            $('.messages').append('<div class="message"><strong>' + message.author + '<strong>: ' + message.message + '</div>')
+            $('.messages').append('<div class="message" id="message"><strong>' + message.author + '<strong>: ' + message.message + '</div>')
         }
 
-        socket.on('previousMessages', function(message){
-            for( message of messages){
-                renderMessage(message)
+        socket.on('previousMessages', function (message) {
+            for (message of messages) {
+                renderMessage(messages)
             }
         })
 
-        socket.on('receivedMessage', function(message){
+        socket.on('receivedMessage', function (message) {
             renderMessage(message);
         });
 
@@ -51,9 +57,69 @@
                 renderMessage(messageObject)
                 socket.emit('sendMessage', messageObject)
 
-                console.log(messageObject)
+                fetch("chat/ArmazenarMensagem", {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        emailServer: author,
+                        mensagemServer: message
+                    })
+                }).then(function (resposta) {
+                    console.log("resposta : ", resposta);
+                    if (resposta.ok) {
+
+                    } else {
+                        console.log(`#ERRO: ${resposta}`);
+                    }
+                }).catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                })
             }
         })
+        function retornarMensagem() {
+            fetch('chat/retornarMensagem', { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        for (var i = 0; i < resposta.length; i++) {
+                            var messageObject = {
+                                author: resposta[i].email,
+                                message: resposta[i].mensagem,
+                            };
+                            renderMessage(messageObject)
+                            socket.emit('sendMessage', messageObject)
+
+                        }
+
+                    })
+                } else {
+                    console.log('Nenhum dado encontrados')
+                }
+            }).catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+            });
+        }
+
+        function emailAtual() {
+            fetch('/pessoa/emailAtual', { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        emailUser.innerHTML = ` <input type="text" value="${resposta[0].email}" name="username" placeholder="${resposta[0].email}" disabled> `
+                        var messageObject = {
+                            author: `${resposta[0].email}`,
+                            message: "entrou na conversa.",
+                        };
+                        renderMessage(messageObject)
+                        socket.emit('sendMessage', messageObject)
+                    })
+                } else {
+                    console.log('Nenhum dado encontrados')
+                }
+            }).catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`)
+            });
+        }
     </script>
 </body>
 

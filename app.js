@@ -19,11 +19,11 @@ const io = require('socket.io')(server); // configuração http e web socket
 
 var pessoaRouter = require("./src/routes/pessoa");
 var dashRouter = require("./src/routes/dashboard");
+var chatRouter = require("./src/routes/chat");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public'));
@@ -34,9 +34,7 @@ app.use(cors());
 
 app.use("/pessoa", pessoaRouter);
 app.use("/dashboard", dashRouter);
-app.use('/dashboard/chat', (req, res) =>{
-    res.render('chat.html');
-});
+app.use('/chat', chatRouter);
 
 
 let messages = [];
