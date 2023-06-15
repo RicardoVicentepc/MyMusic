@@ -2,7 +2,7 @@ var mysql = require("mysql2");
 
 var mySqlConfig = {
     host: "localhost",
-    database: "mydb",
+    database: "MyMusic",
     user: "usuario",
     password: "123",
 };

@@ -1,99 +1,60 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+create database MyMusic;
+USE MyMusic;
 
-/*
-comandos para mysql - banco local - ambiente de desenvolvimento
-*/
+-- -----------------------------------------------------
+CREATE TABLE pessoa(
+  idPessoa INT PRIMARY KEY  AUTO_INCREMENT,
+  nome VARCHAR(45),
+  sobreNome VARCHAR(45),
+  email VARCHAR(45),
+  senha VARCHAR(45),
+  dtCadastro DATE);
 
-CREATE DATABASE aquatech;
+-- -----------------------------------------------------
 
-USE aquatech;
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
+CREATE TABLE messagem(
+  idMensagem INT NOT NULL AUTO_INCREMENT,
+  mensagem VARCHAR(45),
+  fk_pessoa INT NOT NULL,
+  PRIMARY KEY (idMensagem, fk_pessoa),
+  INDEX fk_messagem_pessoa1_idx (fk_pessoa ASC) VISIBLE,
+  CONSTRAINT fk_messagem_pessoa1
+    FOREIGN KEY (fk_pessoa) REFERENCES pessoa (idPessoa)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
-
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
+-- -----------------------------------------------------
+CREATE TABLE tbmusica(
+  idMusica INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  nomeMusica VARCHAR(45),
+  genero VARCHAR(45)
+  );
 
 
-/*
-comando para sql server - banco remoto - ambiente de produção
-*/
+-- ------------------------------------------------------- -----------------------------------------------------
+CREATE TABLE recomendacao(
+  idRecomendacao INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  fkPessoa INT,
+  fkMusica INT NOT NULL,
+  email VARCHAR(45),
+  descricao VARCHAR(45),
+  CONSTRAINT fk_Recomendacao_Pessoa1 FOREIGN KEY (fkPessoa) REFERENCES pessoa (idPessoa),
+  CONSTRAINT fk_Recomendacao_tbMusica1 FOREIGN KEY (fkMusica) REFERENCES tbmusica (idMusica));
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-);
+-- ------------------------------------------------------- -----------------------------------------------------
+CREATE TABLE tbartista(
+  idArtista INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  nomeArtista VARCHAR(45));
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
-);
+-- ------------------------------------------------------- -----------------------------------------------------
+CREATE TABLE tbalbum(
+  idtbAlbum INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  nomeAlbum VARCHAR(45),
+  tbMusica_idMusica INT NOT NULL,
+  tbArtista_idArtista INT NOT NULL,
+  CONSTRAINT fk_tbAlbum_tbArtista1 FOREIGN KEY (tbArtista_idArtista) REFERENCES tbartista (idArtista),
+  CONSTRAINT fk_tbAlbum_tbMusica1 FOREIGN KEY (tbMusica_idMusica) REFERENCES tbmusica (idMusica)
+  );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY IDENTITY(1,1),
-	descricao VARCHAR(300)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT FOREIGN KEY REFERENCES aquario(id)
-);
-
-/*
-comandos para criar usuário em banco de dados azure, sqlserver,
-com permissão de insert + update + delete + select
-*/
-
-CREATE USER [usuarioParaAPIWebDataViz_datawriter_datareader]
-WITH PASSWORD = '#Gf_senhaParaAPIWebDataViz',
-DEFAULT_SCHEMA = dbo;
-
-EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
-
-EXEC sys.sp_addrolemember @rolename = N'db_datareader',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+create user 'usuario'@'localhost' identified by '123';
+grant all privileges on mymusic.* to 'usuario'@'localhost';
+flush privileges;
